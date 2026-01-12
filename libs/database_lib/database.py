@@ -1,17 +1,17 @@
 import sqlite3
+import pandas as pd
 
-path = "./resources/database/students.db"
-conn = sqlite3.connect(path)
+path_students_db = "./resources/database/students.db"
+path_students_xlsx = "./resources/database/students.xlsx"
+conn = sqlite3.connect(path_students_db)
 cursor = conn.cursor()
+df = pd.read_excel(path_students_xlsx)
 
 def make_table_SinhVien():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS SinhVienn (
     MSSV INTEGER PRIMARY KEY,
-    HoTen TEXT NOT NULL,
-    NgaySinh DATE,
-    MLH TEXT NOT NULL,
-    FOREIGN KEY (MLH) REFERENCES LopHoc(MLH)
+    HoTen TEXT NOT NULL
     );
     """)
 
@@ -38,23 +38,23 @@ def make_table_BangDiem():
     );
     """)
 
-def insert_to_table_SinhVien(MSSV, HoTen, NgaySinh, MLH):
+def insert_to_table_SinhVien(MSSV, HoTen):
     cursor.execute("""
-        INSERT INTO SinhVienn (MSSV, HoTen, NgaySinh, MLH) 
-        VALUES (?, ?, ?, ?);
-    """, (MSSV, HoTen, NgaySinh, MLH))
+        INSERT OR IGNORE INTO SinhVienn (MSSV, HoTen) 
+        VALUES (?, ?);
+    """, (MSSV, HoTen))
     conn.commit()
 
 def insert_to_table_LopHoc(MLH, HocKy, Ten):
     cursor.execute("""
-        INSERT INTO LopHoc (MLH, HocKy, Ten) 
+        INSERT OR IGNORE INTO LopHoc (MLH, HocKy, Ten) 
         VALUES (?, ?, ?);
     """, (MLH, HocKy, Ten))
     conn.commit()
 
 def insert_to_table_BangDiem(MLH, HocKy, MSSV, Diem):
     cursor.execute("""
-        INSERT INTO BangDiem (MLH, HocKy, MSSV, Diem) 
+        INSERT OR IGNORE INTO BangDiem (MLH, HocKy, MSSV, Diem) 
         VALUES (?, ?, ?, ?);
     """, (MLH, HocKy, MSSV, Diem))
     conn.commit()
@@ -65,4 +65,16 @@ def make_all_tables():
     make_table_SinhVien()
     make_table_BangDiem()
     conn.commit()
+
+def get_info_in_file_resources_database_students_xlsx():
+    for _, row in df.iterrows(): 
+        MSSV = int(row.iloc[0]) 
+        HoTen = str(row.iloc[1]) 
+        insert_to_table_SinhVien(MSSV, HoTen)
     conn.close()
+
+def print_all_SinhVien():
+    cursor.execute("SELECT * FROM SinhVienn;")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
