@@ -112,3 +112,15 @@ def print_all_BangDiem():
     rows = cursor.fetchall()
     for row in rows:
         print(row)
+
+def print_info_sinhvien(MSSV):
+    cursor.execute("""
+        SELECT s.MSSV, s.HoTen, l.MLH, l.HocKy, l.Ten, b.Diem
+        FROM SinhVienn s
+        JOIN BangDiem b ON s.MSSV = b.MSSV
+        JOIN LopHoc l ON b.MLH = l.MLH AND b.HocKy = l.HocKy
+        WHERE s.MSSV = ?;
+    """, (MSSV,))
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)

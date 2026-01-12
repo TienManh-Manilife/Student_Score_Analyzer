@@ -7,4 +7,5 @@ if __name__ == "__main__":
     # get_info_in_file_resources_database_classes_xlsx()
     # print_all_LopHoc()
     # get_info_in_file_resources_database_scores_xlsx()
-    print_all_BangDiem()
+    # print_all_BangDiem()
+    print_info_sinhvien(24020220)
