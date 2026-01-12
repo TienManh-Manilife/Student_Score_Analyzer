@@ -6,3 +6,5 @@ if __name__ == "__main__":
     # print_all_SinhVien()
     # get_info_in_file_resources_database_classes_xlsx()
     # print_all_LopHoc()
+    # get_info_in_file_resources_database_scores_xlsx()
+    print_all_BangDiem()

@@ -96,3 +96,19 @@ def get_info_in_file_resources_database_classes_xlsx():
         Ten = str(row.iloc[2]) 
         insert_to_table_LopHoc(MLH, HocKy, Ten)
     conn.close()
+
+def get_info_in_file_resources_database_scores_xlsx():
+    for _, row in df_scores.iterrows(): 
+        for i in range(0, 6):
+            MLH = str(row.iloc[i*4 + 0]) 
+            HocKy = int(row.iloc[i*4 + 1])
+            MSSV = str(row.iloc[i*4 + 2]) 
+            Diem = float(row.iloc[i*4 + 3])
+            insert_to_table_BangDiem(MLH, HocKy, MSSV, Diem)
+    conn.close()
+
+def print_all_BangDiem():
+    cursor.execute("SELECT * FROM BangDiem;")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
