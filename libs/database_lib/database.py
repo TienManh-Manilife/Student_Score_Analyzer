@@ -3,9 +3,13 @@ import pandas as pd
 
 path_students_db = "./resources/database/students.db"
 path_students_xlsx = "./resources/database/students.xlsx"
+path_classes_xlsx = "./resources/database/classes.xlsx"
+path_scores_xlsx = "./resources/database/scores.xlsx"
 conn = sqlite3.connect(path_students_db)
 cursor = conn.cursor()
-df = pd.read_excel(path_students_xlsx)
+df_students = pd.read_excel(path_students_xlsx)
+df_classes = pd.read_excel(path_classes_xlsx)
+df_scores = pd.read_excel(path_scores_xlsx)
 
 def make_table_SinhVien():
     cursor.execute("""
@@ -40,21 +44,21 @@ def make_table_BangDiem():
 
 def insert_to_table_SinhVien(MSSV, HoTen):
     cursor.execute("""
-        INSERT OR IGNORE INTO SinhVienn (MSSV, HoTen) 
+        INSERT OR REPLACE INTO SinhVienn (MSSV, HoTen) 
         VALUES (?, ?);
     """, (MSSV, HoTen))
     conn.commit()
 
 def insert_to_table_LopHoc(MLH, HocKy, Ten):
     cursor.execute("""
-        INSERT OR IGNORE INTO LopHoc (MLH, HocKy, Ten) 
+        INSERT OR REPLACE INTO LopHoc (MLH, HocKy, Ten) 
         VALUES (?, ?, ?);
     """, (MLH, HocKy, Ten))
     conn.commit()
 
 def insert_to_table_BangDiem(MLH, HocKy, MSSV, Diem):
     cursor.execute("""
-        INSERT OR IGNORE INTO BangDiem (MLH, HocKy, MSSV, Diem) 
+        INSERT OR REPLACE INTO BangDiem (MLH, HocKy, MSSV, Diem) 
         VALUES (?, ?, ?, ?);
     """, (MLH, HocKy, MSSV, Diem))
     conn.commit()
@@ -67,7 +71,7 @@ def make_all_tables():
     conn.commit()
 
 def get_info_in_file_resources_database_students_xlsx():
-    for _, row in df.iterrows(): 
+    for _, row in df_students.iterrows(): 
         MSSV = int(row.iloc[0]) 
         HoTen = str(row.iloc[1]) 
         insert_to_table_SinhVien(MSSV, HoTen)
@@ -78,3 +82,17 @@ def print_all_SinhVien():
     rows = cursor.fetchall()
     for row in rows:
         print(row)
+
+def print_all_LopHoc():
+    cursor.execute("SELECT * FROM LopHoc;")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+def get_info_in_file_resources_database_classes_xlsx():
+    for _, row in df_classes.iterrows(): 
+        MLH = str(row.iloc[0]) 
+        HocKy = int(row.iloc[1])
+        Ten = str(row.iloc[2]) 
+        insert_to_table_LopHoc(MLH, HocKy, Ten)
+    conn.close()
