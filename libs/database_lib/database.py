@@ -38,6 +38,28 @@ def make_table_BangDiem():
     );
     """)
 
+def insert_to_table_SinhVien(MSSV, HoTen, NgaySinh, MLH):
+    cursor.execute("""
+        INSERT INTO SinhVienn (MSSV, HoTen, NgaySinh, MLH) 
+        VALUES (?, ?, ?, ?);
+    """, (MSSV, HoTen, NgaySinh, MLH))
+    conn.commit()
+
+def insert_to_table_LopHoc(MLH, HocKy, Ten):
+    cursor.execute("""
+        INSERT INTO LopHoc (MLH, HocKy, Ten) 
+        VALUES (?, ?, ?);
+    """, (MLH, HocKy, Ten))
+    conn.commit()
+
+def insert_to_table_BangDiem(MLH, HocKy, MSSV, Diem):
+    cursor.execute("""
+        INSERT INTO BangDiem (MLH, HocKy, MSSV, Diem) 
+        VALUES (?, ?, ?, ?);
+    """, (MLH, HocKy, MSSV, Diem))
+    conn.commit()
+
+
 def make_all_tables():
     make_table_LopHoc()
     make_table_SinhVien()
