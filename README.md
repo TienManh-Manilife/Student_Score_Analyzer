@@ -19,9 +19,19 @@
         - Khóa chính: Mã lớp học + Học kỳ + Mã số sinh viên
 ## Chức năng cơ bản
 #### GPA của 1 sinh viên trong tất cả các kỳ  
+- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+    draw_chart_each_gpa_of_a_student(MSSV)  
+    - MSSV: Điền MSSV của từng sinh viên, muốn biết chi tiết thì dùng hàm 
+    print(get_all_mssv()) sẽ in ra tất cả MSSV của sinh viên trong danh sách  
 ![./resources/output_images/draw_chart_each_gpa_of_a_student_24020220.png](./resources/output_images/draw_chart_each_gpa_of_a_student_24020220.png)
 #### GPA của cả lớp trong 1 kỳ  
+- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+    draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
+    - HocKy: Có 4 kỳ như sau: 12425, 22425, 12526, 22526  
 ![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12425.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12425.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22425.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22425.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png)  
 #### CPA của cả lớp  
 #### Thống kê dữ liệu điểm của 1 môn học  
 #### Thống kê điểm từng môn trong 1 kỳ của 1 sinh viên

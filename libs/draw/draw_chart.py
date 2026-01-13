@@ -83,4 +83,4 @@ def get_evaluation_text(arr):
       return f"Max: {np.max(arr)}\nMin: {np.min(arr)}\n"\
                     f"Trung bình: {round(np.mean(arr), 2)}\nTrung vị: {round(np.median(arr), 2)}\n"\
                     f"Phương sai: {round(np.var(arr), 2)}\nĐộ lệch chuẩn: {round(np.std(arr), 2)}\n"\
-                    f"Q1: {q1}\nQ2: {q2}\nKhoảng tứ phân vị: {np.abs(q1-q2)}"
+                    f"Q1: {q1}\nQ2: {q2}\nKhoảng tứ phân vị: {round(np.abs(q1-q2), 2)}"
