@@ -114,36 +114,3 @@ def print_all_BangDiem():
     for row in rows:
         print(row)
 
-def print_info_sinhvien(MSSV):
-    cursor.execute("""
-        SELECT s.MSSV, s.HoTen, l.MLH, l.HocKy, l.Ten, b.Diem
-        FROM SinhVienn s
-        JOIN BangDiem b ON s.MSSV = b.MSSV
-        JOIN LopHoc l ON b.MLH = l.MLH AND b.HocKy = l.HocKy
-        WHERE s.MSSV = ?;
-    """, (MSSV,))
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-
-def get_gpa(MSSV, HocKy):
-    cursor.execute("""
-        SELECT b.Diem
-        FROM SinhVienn s
-        JOIN BangDiem b ON s.MSSV = b.MSSV
-        WHERE s.MSSV = ? AND b.HocKy = ?;
-    """, (MSSV, HocKy))
-    rows = cursor.fetchall()
-    scores = [row[0] for row in rows]
-    return round(np.mean(scores), 2)
-
-def get_cpa(MSSV):
-    cursor.execute("""
-        SELECT b.Diem
-        FROM SinhVienn s
-        JOIN BangDiem b ON s.MSSV = b.MSSV
-        WHERE s.MSSV = ?;
-    """, (MSSV,))
-    rows = cursor.fetchall()
-    scores = [row[0] for row in rows]
-    return round(np.mean(scores), 2)
