@@ -1,3 +1,4 @@
+from typing import Counter
 import matplotlib.pyplot as plt
 from libs.database_lib.evaluate_student_lib import *
 
@@ -31,22 +32,38 @@ def draw_chart_each_gpa_of_a_student(MSSV):
     plt.show()
 
 def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15,7), sharey=True)
-    set_figure(fig, f"GPA của tất cả sinh viên trong kỳ {HocKy}")
+    fig, axes = plt.subplots(2, 2, figsize=(16,7))
+    ax1, ax2, ax3, ax4 = axes.flatten()
+
     all_mssv = get_all_MSSV()
     all_gpa_HocKy = [get_gpa_4(mssv, HocKy) for mssv in all_mssv]
+    evaluate = ["Giỏi", "Khá", "Trung bình", "Kém"]
+    all_count_academic_prefomance = Counter([evaluate_academic_perfomance(mssv, HocKy) for mssv in all_mssv])
+    count_evaluate = [all_count_academic_prefomance[ev] for ev in evaluate]
 
+    set_figure(fig, f"GPA của tất cả sinh viên trong kỳ {HocKy}")
     evaluation_text = get_evaluation_text(all_gpa_HocKy)
+    fig.text(0.55, 0.65, evaluation_text)
 
     ax1.plot(all_mssv, all_gpa_HocKy, "r-^", label="Điểm - MSSV tương ứng")
-    fig.text(0.55, 0.65, evaluation_text)
+    ax1.set_title("Chi tiết điểm số")
     ax1.set_xlabel("MSSV")
     ax1.set_ylabel("GPA")
     ax1.legend()
 
     ax2.boxplot(all_gpa_HocKy)
     ax2.set_title("Phân bố GPA")
+    ax2.set_xlabel("MSSV")
     ax2.set_ylabel("GPA")
+    ax2.legend()
+
+    ax3.bar(evaluate, count_evaluate, color="skyblue", edgecolor="black")
+    ax3.set_xlabel("Học lực")
+    ax3.set_ylabel("Số sinh viên")
+    ax3.set_title("")  # xóa title gốc
+    ax3.text(0.5, -0.25, "Số lượng sinh viên theo học lực", ha='center', va='center', transform=ax3.transAxes, fontsize=12)
+
+
 
     fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_{HocKy}.png")
     plt.show()
