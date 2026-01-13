@@ -48,6 +48,22 @@ def get_gpa_10(MSSV, HocKy):
     scores = [row[0] for row in rows]
     return round(np.mean(scores), 2)
 
+def get_arr_gpa_10(MSSV, HocKy):
+    cursor.execute("""
+        SELECT b.Diem
+        FROM SinhVienn s
+        JOIN BangDiem b ON s.MSSV = b.MSSV
+        WHERE s.MSSV = ? AND b.HocKy = ?;
+    """, (MSSV, HocKy))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
+def get_arr_gpa_4(MSSV, HocKy):
+    return [change_score_to_4(score) for score in get_arr_gpa_10(MSSV, HocKy)]
+
+def get_gpa_4(MSSV, HocKy):
+    return round(np.mean(get_arr_gpa_4(MSSV, HocKy)), 2)
+
 def print_info_sinhvien(MSSV):
     cursor.execute("""
         SELECT s.MSSV, s.HoTen, l.MLH, l.HocKy, l.Ten, b.Diem
@@ -103,16 +119,18 @@ def change_score_to_word(score):
 def evaluate_academic_perfomance(MSSV, HocKy=None):
     if HocKy is None:
         score = get_cpa_4(MSSV)
-        if score >= 3.6:
-            return "Xuất sắc"
-        elif score >= 3.2:
-            return "Giỏi"
-        elif score >= 2.5:
-            return "Khá"
-        elif score >= 2.0:
-            return "Trung bình"
-        else:
-            return "Không đủ điều kiện xếp hạng"
+    else:
+        score = score = get_gpa_4(MSSV, HocKy)
+    if score >= 3.6:
+        return "Xuất sắc"
+    elif score >= 3.2:
+        return "Giỏi"
+    elif score >= 2.5:
+        return "Khá"
+    elif score >= 2.0:
+        return "Trung bình"
+    else:
+        return "Không đủ điều kiện xếp hạng"
     
 def evaluate_student(MSSV, HocKy=None):
     if HocKy is None:
@@ -122,6 +140,6 @@ def evaluate_student(MSSV, HocKy=None):
         f"Học lực: {evaluate_academic_perfomance(MSSV)}"
     else:
         return f"Sinh viên {get_name_student(MSSV)}:\n"\
-        f"Điểm trung bình tích lũy trong kỳ {HocKy} (Hệ 10): {get_gpa_10(MSSV)}.\n"\
-        f"Điểm trung bình tích lũy trong kỳ {HocKy} (Hệ 4): {get_cpa_4(MSSV)}.\n" \
+        f"Điểm trung bình tích lũy trong kỳ {HocKy} (Hệ 10): {get_gpa_10(MSSV, HocKy)}.\n"\
+        f"Điểm trung bình tích lũy trong kỳ {HocKy} (Hệ 4): {get_gpa_4(MSSV, HocKy)}.\n" \
         f"Học lực trong kỳ {HocKy}: {evaluate_academic_perfomance(MSSV, HocKy)}"
