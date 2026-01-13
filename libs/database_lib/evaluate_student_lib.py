@@ -12,6 +12,25 @@ def get_cpa_10(MSSV):
     scores = [row[0] for row in rows]
     return round(np.mean(scores), 2)
 
+def get_arr_cpa_10(MSSV):
+    cursor.execute("""
+        SELECT b.Diem
+        FROM SinhVienn s
+        JOIN BangDiem b ON s.MSSV = b.MSSV
+        WHERE s.MSSV = ?;
+    """, (MSSV,))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
+def get_name_student(MSSV):
+    cursor.execute("""
+        SELECT HoTen
+        FROM SinhVienn
+        WHERE MSSV = ?;
+    """, (MSSV,))
+    row = cursor.fetchone()
+    return row[0]
+
 def get_gpa_10(MSSV, HocKy):
     cursor.execute("""
         SELECT b.Diem
@@ -35,23 +54,34 @@ def print_info_sinhvien(MSSV):
     for row in rows:
         print(row)
 
-def change_score_to_4_and_word(score):
+def change_score_to_4(score):
     if score >= 9.0:
-        return 4, "A+"
+        return 4
     elif score >= 8.5:
-        return 3.7, "A"
+        return 3.7
     elif score >= 8.0:
-        return 3.5, "B+"
+        return 3.5
     elif score >= 7.0:
-        return 3.0, "B"
+        return 3.0
     elif score >= 6.5:
-        return 2.5, "C+"
+        return 2.5
     elif score >= 5.5:
-        return 2.0, "C"
+        return 2.0
     elif score >= 5.0:
-        return 1.5, "D+"
+        return 1.5
     elif score >= 4.0:
-        return 1.0, "D"
+        return 1.0
     else:
-        return 0, "F"
+        return 0
+
+def get_arr_cpa_4(MSSV):
+    return [change_score_to_4(score) for score in get_arr_cpa_10(MSSV)]
+
+def get_cpa_4(MSSV):
+    return round(np.mean(get_arr_cpa_4(MSSV)), 2)
     
+def evaluate_academic_perfomance(MSSV, HocKy=None):
+    if HocKy is None:
+        return f"Sinh viên {get_name_student(MSSV)}:\n"\
+        f"Điểm trung bình tích lũy (Hệ 10): {get_cpa_10(MSSV)}.\n"\
+        f"Điểm trung bình tích lũy (Hệ 4): {get_cpa_4(MSSV)}.\n"
