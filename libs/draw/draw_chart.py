@@ -43,7 +43,7 @@ def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
 
     set_figure(fig, f"GPA của tất cả sinh viên trong kỳ {HocKy}")
     evaluation_text = get_evaluation_text(all_gpa_HocKy)
-    fig.text(0.55, 0.65, evaluation_text)
+    fig.text(0.55, 0.2, evaluation_text)
 
     ax1.plot(all_mssv, all_gpa_HocKy, "r-^", label="Điểm - MSSV tương ứng")
     ax1.set_title("Chi tiết điểm số")
@@ -51,19 +51,21 @@ def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
     ax1.set_ylabel("GPA")
     ax1.legend()
 
-    ax2.boxplot(all_gpa_HocKy)
-    ax2.set_title("Phân bố GPA")
+    ax2.hist(all_gpa_HocKy)
+    ax2.set_title("Chi tiết điểm số")
     ax2.set_xlabel("MSSV")
     ax2.set_ylabel("GPA")
-    ax2.legend()
+
+    ax4.boxplot(all_gpa_HocKy)
+    ax4.set_ylabel("GPA")
+    ax4.text(0.5, -0.25, "Phân bố GPA", ha='center', va='center', transform=ax4.transAxes, fontsize=12)
+    ax4.legend()
 
     ax3.bar(evaluate, count_evaluate, color="skyblue", edgecolor="black")
     ax3.set_xlabel("Học lực")
     ax3.set_ylabel("Số sinh viên")
     ax3.set_title("")  # xóa title gốc
     ax3.text(0.5, -0.25, "Số lượng sinh viên theo học lực", ha='center', va='center', transform=ax3.transAxes, fontsize=12)
-
-
 
     fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_{HocKy}.png")
     plt.show()
