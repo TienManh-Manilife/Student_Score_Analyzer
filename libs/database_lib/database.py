@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+import numpy as np
 
 path_students_db = "./resources/database/students.db"
 path_students_xlsx = "./resources/database/students.xlsx"
@@ -124,3 +125,14 @@ def print_info_sinhvien(MSSV):
     rows = cursor.fetchall()
     for row in rows:
         print(row)
+
+def get_gpa(MSSV, HocKy):
+    cursor.execute("""
+        SELECT b.Diem
+        FROM SinhVienn s
+        JOIN BangDiem b ON s.MSSV = b.MSSV
+        WHERE s.MSSV = ? AND b.HocKy = ?;
+    """, (MSSV, HocKy))
+    rows = cursor.fetchall()
+    scores = [row[0] for row in rows]
+    return round(np.mean(scores), 2)
