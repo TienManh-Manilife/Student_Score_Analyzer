@@ -130,7 +130,7 @@ def evaluate_academic_perfomance(MSSV, HocKy=None):
     elif score >= 2.0:
         return "Trung bình"
     else:
-        return "Không đủ điều kiện xếp hạng"
+        return "Kém"
     
 def evaluate_student(MSSV, HocKy=None):
     if HocKy is None:
