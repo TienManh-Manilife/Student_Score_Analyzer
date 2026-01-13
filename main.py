@@ -12,4 +12,4 @@ if __name__ == "__main__":
     # print_info_sinhvien(24020220)
     # print(get_gpa_10(24020220, 12425), " ", get_cpa_10(24020220))
     # print(get_name_student(24020220))
-    print(evaluate_academic_perfomance(24020220))
+    print(evaluate_student(24020220))
