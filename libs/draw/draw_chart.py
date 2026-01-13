@@ -21,7 +21,7 @@ def draw_chart_each_gpa_of_a_student(MSSV):
 
 def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
     fig, ax = plt.subplots(figsize=(15, 7))
-    set_figure(fig, f"GPA của tất cả sinh viên qua kỳ {HocKy}")
+    set_figure(fig, f"GPA của tất cả sinh viên trong kỳ {HocKy}")
 
     all_gpa_HocKy = [get_gpa_4(mssv, HocKy) for mssv in get_all_MSSV()]
     ax.plot(get_all_MSSV(), all_gpa_HocKy, "r-^", label="Điểm - MSSV tương ứng")
