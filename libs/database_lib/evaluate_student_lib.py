@@ -143,3 +143,8 @@ def evaluate_student(MSSV, HocKy=None):
         f"Điểm trung bình tích lũy trong kỳ {HocKy} (Hệ 10): {get_gpa_10(MSSV, HocKy)}.\n"\
         f"Điểm trung bình tích lũy trong kỳ {HocKy} (Hệ 4): {get_gpa_4(MSSV, HocKy)}.\n" \
         f"Học lực trong kỳ {HocKy}: {evaluate_academic_perfomance(MSSV, HocKy)}"
+    
+def get_all_MSSV():
+    cursor.execute("SELECT MSSV FROM SinhVienn;")
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
