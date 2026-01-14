@@ -28,10 +28,10 @@
 - Hướng dẫn vẽ: Sử dụng hàm sau trong main:
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
     - HocKy: Có 4 kỳ như sau: 12425, 22425, 12526, 22526  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12425.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12425.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22425.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22425.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12526.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_1.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_1.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_2.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_2.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_3.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_3.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_4.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_4.png)  
 #### CPA của cả lớp  
 #### Thống kê dữ liệu điểm của 1 môn học  
 #### Thống kê điểm từng môn trong 1 kỳ của 1 sinh viên
