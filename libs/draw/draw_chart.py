@@ -47,6 +47,7 @@ def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
 
     ax1.plot(all_mssv, all_gpa_HocKy, "r-^", label="Điểm - MSSV tương ứng")
     ax1.set_title("Chi tiết điểm số")
+    ax1.axhline(np.mean(all_gpa_HocKy), color="green", linestyle="--", label="Trung bình")
     ax1.set_xlabel("MSSV")
     ax1.set_ylabel("GPA")
     ax1.legend()
@@ -64,7 +65,6 @@ def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
     ax3.bar(evaluate, count_evaluate, color="skyblue", edgecolor="black")
     ax3.set_xlabel("Học lực")
     ax3.set_ylabel("Số sinh viên")
-    ax3.set_title("")  # xóa title gốc
     ax3.text(0.5, -0.25, "Số lượng sinh viên theo học lực", ha='center', va='center', transform=ax3.transAxes, fontsize=12)
 
     fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_{HocKy}.png")

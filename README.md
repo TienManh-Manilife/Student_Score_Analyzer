@@ -30,7 +30,7 @@
     - HocKy: Có 4 kỳ như sau: 12425, 22425, 12526, 22526  
 ![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12425.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12425.png)  
 ![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22425.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22425.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_12526.png)  
 ![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_22526.png)  
 #### CPA của cả lớp  
 #### Thống kê dữ liệu điểm của 1 môn học  
