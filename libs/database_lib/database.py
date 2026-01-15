@@ -76,7 +76,6 @@ def get_info_in_file_resources_database_students_xlsx():
         MSSV = int(row.iloc[0]) 
         HoTen = str(row.iloc[1]) 
         insert_to_table_SinhVien(MSSV, HoTen)
-    conn.close()
 
 def print_all_SinhVien():
     cursor.execute("SELECT * FROM SinhVien;")

@@ -1,7 +1,7 @@
 from .database import *
 import numpy as np
 
-max_HocKy = 4
+max_HocKy = 7
 
 def get_cpa_10(MSSV):
     cursor.execute("""

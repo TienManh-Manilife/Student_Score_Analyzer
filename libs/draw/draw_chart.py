@@ -22,9 +22,9 @@ def draw_chart_each_gpa_of_a_student(MSSV):
 
     evaluation_text = ""
     for i in range(0, max_HocKy):
-        evaluation_text += f"{HocKy[i]}: {evaluate_academic_perfomance(MSSV, i)}\n"
+        evaluation_text += f"{HocKy[i]}: {evaluate_academic_perfomance(MSSV, i + 1)}\n"
 
-    fig.text(0.01, 0.86, evaluation_text)
+    fig.text(0.01, 0.8, evaluation_text)
     ax.legend()
     fig.savefig(f"./resources/output_images/draw_chart_each_gpa_of_a_student_{MSSV}.png")
     plt.show()
