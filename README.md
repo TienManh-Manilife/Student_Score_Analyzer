@@ -40,7 +40,9 @@
 7. change_score_to_4(score) và change_score_to_word(score): Chuyển điểm thành hệ 4 và hệ chữ
 8. evaluate_academic_perfomance(MSSV, HocKy=None): Đánh giá học lực, mặc định là đánh giá tất cả kỳ nếu không truyền HocKy
 9. evaluate_student(MSSV, HocKy=None): Đánh giá tất cả thông tin của 1 sinh viên
-10. get_all_MSSV(): Trả về danh sách tất cả MSSV
+10. get_all_MSSV() - get_all_MLH(): Trả về danh sách tất cả MSSV, Trả về danh sách tất cả mã lớp học MLH
+11. get_all_score_in_a_LopHoc(MLH): Trả về danh sách điểm của tất cả sinh viên trong lớp học đó
+12. 
 #### GPA của 1 sinh viên trong tất cả các kỳ  
 - Hướng dẫn vẽ: Sử dụng hàm sau trong main:
     draw_chart_each_gpa_of_a_student(MSSV)  
