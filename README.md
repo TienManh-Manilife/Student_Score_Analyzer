@@ -46,34 +46,40 @@
 11. get_all_score_in_a_LopHoc(MLH): Trả về danh sách điểm của tất cả sinh viên trong lớp học đó
 12. 
 #### GPA của 1 sinh viên trong tất cả các kỳ  
-- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+- Hướng dẫn vẽ: Sử dụng hàm sau:  
     draw_chart_each_gpa_of_a_student(MSSV)  
+    - MSSV: Mã số sinh viên
 ![./resources/output_images/draw_chart_each_gpa_of_a_student_24020220.png](./resources/output_images/draw_chart_each_gpa_of_a_student_24020220.png)
 #### GPA của cả lớp trong 1 kỳ  
-- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+- Hướng dẫn vẽ: Sử dụng hàm sau:  
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
     - HocKy: Học kỳ. Có các kỳ như sau: 1, 2, 3, 4  
 ![./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_1.png](./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_1.png)  
 ![./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_4.png](./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_4.png)  
 #### CPA của cả lớp  
-- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+- Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
     - HocKy Học kỳ. Có các học kỳ: 1, 2, 3, 4
 ![./resources/output_images/draw_chart_cpa_of_all_students.png](./resources/output_images/draw_chart_cpa_of_all_students.png)  
 #### Thống kê dữ liệu điểm của 1 môn học  
-- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+- Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_scores_all_students_in_a_LopHoc(MLH)  
     - MLH là mã lớp học
 ![./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_FLF1107.png](./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_FLF1107.png)  
 ![./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png](./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png)  
 #### Thống kê điểm từng môn trong 1 kỳ của 1 sinh viên  
-- Hướng dẫn vẽ: Sử dụng hàm sau trong main:
+- Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(MSSV, HocKy)  
     - MSSV: Mã số sinh viên
     - HocKy: Học kỳ
 ![./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020004_3.png](./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020004_3.png)  
 ![./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020013_2.png](./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020013_2.png)  
 #### Thống kê điểm tất cả các môn trong tất cả kì của sinh viên
+- Hướng dẫn vẽ: Sử dụng hàm sau:
+    draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(MSSV)  
+    - MSSV: Mã số sinh viên
+![./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020025.png](./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020025.png)  
+![./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png](./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png)  
 #### Thống kê điểm trung bình của tất cả các môn học với nhau
 ## Chức năng nâng cao
 #### Hồi quy
