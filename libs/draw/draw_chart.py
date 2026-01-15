@@ -1,6 +1,6 @@
 from typing import Counter
 import matplotlib.pyplot as plt
-from libs.database_lib.evaluate_student_lib import get_all_MSSV, get_cpa_4, max_HocKy, get_gpa_4, get_name_student, evaluate_academic_perfomance
+from libs.database_lib.evaluate_student_lib import change_score_to_word, get_all_MSSV, get_all_score_in_a_LopHoc, get_cpa_4, get_name_LopHoc, max_HocKy, get_gpa_4, get_name_student, evaluate_academic_perfomance
 import numpy as np
 import mplcursors
 
@@ -34,7 +34,7 @@ def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
 
     all_mssv = get_all_MSSV()
     all_gpa_HocKy = [get_gpa_4(mssv, HocKy) for mssv in all_mssv]
-    evaluate = ["Giỏi", "Khá", "Trung bình", "Kém"]
+    evaluate = ["Xuất sắc", "Giỏi", "Khá", "Trung bình", "Kém"]
     all_count_academic_prefomance = Counter([evaluate_academic_perfomance(mssv, HocKy) for mssv in all_mssv])
     count_evaluate = [all_count_academic_prefomance[ev] for ev in evaluate]
 
@@ -43,12 +43,9 @@ def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
     fig.text(0.55, 0.2, evaluation_text)
 
     ax1 = set_ax1_plot(ax1, all_mssv, all_gpa_HocKy, "Chi tiết điểm số", "Điểm - MSSV tương ứng", "MSSV", "GPA")
-
     ax2 = set_ax2_hist(ax2, all_gpa_HocKy, "Chi tiết điểm số", "MSSV", "GPA")
-
     ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
                       0.5, -0.25, "Số lượng sinh viên theo học lực")
-
     ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
     fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_{HocKy}.png")
@@ -57,27 +54,44 @@ def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
 def draw_chart_cpa_of_all_students():
     fig, axes = plt.subplots(2, 2, figsize=(16,7))
     ax1, ax2, ax3, ax4 = axes.flatten()
+    set_figure(fig, "CPA của tất cả sinh viên")
 
     all_mssv = get_all_MSSV()
     all_gpa_HocKy = [get_cpa_4(mssv) for mssv in all_mssv]
-    evaluate = ["Giỏi", "Khá", "Trung bình", "Kém"]
+    evaluate = ["Xuất sắc", "Giỏi", "Khá", "Trung bình", "Kém"]
     all_count_academic_prefomance = Counter([evaluate_academic_perfomance(mssv) for mssv in all_mssv])
     count_evaluate = [all_count_academic_prefomance[ev] for ev in evaluate]
 
-    set_figure(fig, f"CPA của tất cả sinh viên")
     evaluation_text = get_evaluation_text(all_gpa_HocKy)
     fig.text(0.55, 0.2, evaluation_text)
 
     ax1 = set_ax1_plot(ax1, all_mssv, all_gpa_HocKy, "Chi tiết điểm số", "Điểm - MSSV tương ứng", "MSSV", "CPA")
-
     ax2 = set_ax2_hist(ax2, all_gpa_HocKy, "Chi tiết điểm số", "MSSV", "CPA")
-
     ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
                       0.5, -0.25, "Số lượng sinh viên theo học lực")
-
     ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
     fig.savefig(f"./resources/output_images/draw_chart_cpa_of_all_students.png")
+    plt.show()
+
+def draw_chart_scores_all_students_in_a_LopHoc(MLH):
+    fig, axes = plt.subplots(2, 2, figsize=(16,7))
+    ax1, ax2, ax3, ax4 = axes.flatten()
+    set_figure(fig, f"Điểm {get_name_LopHoc(MLH)} của tất cả sinh viên")
+
+    all_mssv = get_all_MSSV()
+    all_scores_10 = get_all_score_in_a_LopHoc(MLH)
+    all_scores_word = [change_score_to_word(ans) for ans in all_scores_10]
+    evaluate = ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"]
+    all_count_academic_prefomance = Counter(all_scores_word)
+    count_evaluate = [all_count_academic_prefomance[ev] for ev in evaluate]
+
+    ax1 = set_ax1_plot(ax1, all_mssv, all_scores_10, "Chi tiết điểm số", "Điểm - MSSV tương ứng", "MSSV", "Điểm")
+    ax2 = set_ax2_hist(ax2, all_scores_10, "Chi tiết điểm số", "MSSV", "Điểm")
+    ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
+                      0.5, -0.25, "Số lượng sinh viên theo học lực")
+    ax4 = set_ax4_boxplot(ax4, all_scores_10, "GPA", 0.5, -0.25, "Phân bố Điểm")
+    fig.savefig(f"./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_{MLH}.png")
     plt.show()
 
 def set_ax1_plot(ax1, x, y, title, LABEL, xlabel, ylabel):

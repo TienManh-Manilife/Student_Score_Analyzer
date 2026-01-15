@@ -30,7 +30,9 @@
         - Khóa chính: Mã lớp học + Học kỳ + Mã số sinh viên
 ## Chức năng cơ bản
 #### Một số hàm cần thiết khi sử dụng
-- Chú ý: Các hàm đã tự động truy cập database, người dùng không cần truy cập lại. Không có hàm nào in ra màn hình vì mục đích vẽ biểu đồ, nếu muốn đơn lẻ hiện ra màn hình thì thêm print.
+- Chú ý: 
+    - Các hàm đã tự động truy cập database, người dùng không cần truy cập lại. 
+    - Không có hàm nào in ra màn hình vì mục đích vẽ biểu đồ, nếu muốn đơn lẻ hiện ra màn hình thì thêm print.
 1. get_cpa_10(MSSV) và get_cpa_4(MSSV): Lấy CPA hệ 10 và hệ 4 của 1 sinh viên
 2. get_arr_cpa_10(MSSV) và get_arr_cpa_4(MSSV): Lấy danh sách điểm trung bình từng môn tất cả các kỳ của 1 sinh viên theo hệ 10 và hệ 4
 3. get_name_student(MSSV): Lấy tên sinh viên 
