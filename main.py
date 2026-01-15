@@ -3,5 +3,5 @@ from libs.database_lib.evaluate_student_lib import *
 from libs.draw.draw_chart import *
 
 if __name__ == "__main__":
-    get_info_sinhvien(24020004)
-    
+    draw_chart_gpa_of_all_students_each_HocKy(1)    
+    draw_chart_gpa_of_all_students_each_HocKy(4)    

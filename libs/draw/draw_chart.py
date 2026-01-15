@@ -26,7 +26,7 @@ def draw_chart_each_gpa_of_a_student(MSSV):
     fig.savefig(f"./resources/output_images/draw_chart_each_gpa_of_a_student_{MSSV}.png")
     plt.show()
 
-def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
+def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
     fig, axes = plt.subplots(2, 2, figsize=(16,7))
     ax1, ax2, ax3, ax4 = axes.flatten()
 
@@ -40,29 +40,16 @@ def draw_chart_gpa_of_all_students_a_HocKy(HocKy):
     evaluation_text = get_evaluation_text(all_gpa_HocKy)
     fig.text(0.55, 0.2, evaluation_text)
 
-    ax1.plot(all_mssv, all_gpa_HocKy, "r-^", label="Điểm - MSSV tương ứng")
-    ax1.set_title("Chi tiết điểm số")
-    ax1.axhline(np.mean(all_gpa_HocKy), color="green", linestyle="--", label="Trung bình")
-    ax1.set_xlabel("MSSV")
-    ax1.set_ylabel("GPA")
-    ax1.legend()
+    ax1 = set_ax1_plot(ax1, all_mssv, all_gpa_HocKy, "Chi tiết điểm số", "Điểm - MSSV tương ứng", "MSSV", "GPA")
 
-    ax2.hist(all_gpa_HocKy)
-    ax2.set_title("Chi tiết điểm số")
-    ax2.set_xlabel("MSSV")
-    ax2.set_ylabel("GPA")
+    ax2 = set_ax2_hist(ax2, all_gpa_HocKy, "Chi tiết điểm số", "MSSV", "GPA")
 
-    ax4.boxplot(all_gpa_HocKy)
-    ax4.set_ylabel("GPA")
-    ax4.text(0.5, -0.25, "Phân bố GPA", ha='center', va='center', transform=ax4.transAxes, fontsize=12)
-    ax4.legend()
+    ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
-    ax3.bar(evaluate, count_evaluate, color="skyblue", edgecolor="black")
-    ax3.set_xlabel("Học lực")
-    ax3.set_ylabel("Số sinh viên")
-    ax3.text(0.5, -0.25, "Số lượng sinh viên theo học lực", ha='center', va='center', transform=ax3.transAxes, fontsize=12)
+    ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
+                      0.5, -0.25, "Số lượng sinh viên theo học lực")
 
-    fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_{HocKy}.png")
+    fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_{HocKy}.png")
     plt.show()
 
 def draw_chart_cpa_of_all_students():
@@ -103,6 +90,35 @@ def draw_chart_cpa_of_all_students():
 
     fig.savefig(f"./resources/output_images/draw_chart_cpa_of_all_students.png")
     plt.show()
+
+def set_ax1_plot(ax1, x, y, title, LABEL, xlabel, ylabel):
+    ax1.plot(x, y, "r-^", label = LABEL)
+    ax1.set_title(title)
+    ax1.axhline(np.mean(y), color="green", linestyle="--", label="Trung bình")
+    ax1.set_xlabel(xlabel)
+    ax1.set_ylabel(ylabel)
+    ax1.legend()
+    return ax1
+
+def set_ax2_hist(ax2, y, title, xlabel, ylabel):
+    ax2.hist(y)
+    ax2.set_title(title)
+    ax2.set_xlabel(xlabel)
+    ax2.set_ylabel(ylabel)
+    return ax2
+
+def set_ax3_bar(ax3, x, y, xlabel, ylabel, title_x, title_y, title):
+    ax3.bar(x, y, color="skyblue", edgecolor="black")
+    ax3.set_xlabel(xlabel)
+    ax3.set_ylabel(ylabel)
+    ax3.text(title_x, title_y, title, ha='center', va='center', transform=ax3.transAxes, fontsize=12)
+    return ax3
+
+def set_ax4_boxplot(ax4, y, ylabel, title_x, title_y, xlabel):
+    ax4.boxplot(y)
+    ax4.set_ylabel(ylabel)
+    ax4.text(title_x, title_y, xlabel, ha='center', va='center', transform=ax4.transAxes, fontsize=12)
+    return ax4
 
 def set_figure(fig, title):
     fig.suptitle(title) 

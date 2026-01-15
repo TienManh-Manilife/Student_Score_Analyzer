@@ -1,5 +1,14 @@
-#
+# DỰ ÁN TỰ HỌC CÁ NHÂN: THỐNG KÊ VÀ PHÂN TÍCH ĐIỂM SINH VIÊN
+## Mục lục
+- [Mục đích](#mục-đích)
+- [Dữ liệu](#dữ-liệu)
+- [Chức năng cơ bản](#chức-năng-cơ-bản)
+- [Chức năng nâng cao](#chức-năng-nâng-cao)
 ## Mục đích
+- Tự học python, lập dự án với python
+- Học và thực hành các thư viện phổ biến: Numpy, Matplotlib
+- Học cách thống kê và phân tích dữ liệu cơ bản
+- Học một số các kỹ thuật nâng cao: Hồi quy, Phân cụm K-Means
 ## Dữ liệu
 - Cơ sở dữ liệu:
     - Bảng Sinh viên:
@@ -39,8 +48,6 @@
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
     - HocKy: Có các kỳ như sau: 1, 2, 3, 4  
 ![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_1.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_1.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_2.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_2.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_3.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_3.png)  
 ![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_4.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_4.png)  
 #### CPA của cả lớp  
 ![./resources/output_images/draw_chart_cpa_of_all_students.png](./resources/output_images/draw_chart_cpa_of_all_students.png)  
@@ -48,3 +55,7 @@
 #### Thống kê điểm từng môn trong 1 kỳ của 1 sinh viên
 #### Thống kê điểm tất cả các môn trong tất cả kì của sinh viên
 #### Thống kê điểm trung bình của tất cả các môn học với nhau
+## Chức năng nâng cao
+#### Hồi quy
+#### Phân cụm
+##### Last update: 15/01/2026
