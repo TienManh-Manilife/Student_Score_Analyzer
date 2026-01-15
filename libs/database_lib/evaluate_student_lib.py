@@ -150,18 +150,3 @@ def get_all_MSSV():
     cursor.execute("SELECT MSSV FROM SinhVien;")
     rows = cursor.fetchall()
     return [row[0] for row in rows]
-
-def get_all_score_in_a_LopHoc(MLH):
-    cursor.execute("SELECT Diem FROM BangDiem Where MLH = ?", (MLH,))
-    rows = cursor.fetchall()
-    return [row[0] for row in rows]
-
-def get_all_MLH():
-    cursor.execute("SELECT MLH FROM LopHoc")
-    rows = cursor.fetchall()
-    return [row[0] for row in rows]
-
-def get_name_LopHoc(MLH):
-    cursor.execute("SELECT Ten FROM LopHoc WHERE MLH = ?", (MLH,))
-    row = cursor.fetchone()
-    return row[0]

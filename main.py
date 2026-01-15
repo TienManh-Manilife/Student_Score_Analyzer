@@ -9,3 +9,5 @@ if __name__ == "__main__":
     # draw_chart_gpa_of_all_students_each_HocKy(4)
     # draw_chart_scores_all_students_in_a_LopHoc("FLF1107")
     # draw_chart_scores_all_students_in_a_LopHoc("INT2210")
+    draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(24020004, 3)
+    draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(24020013, 2)

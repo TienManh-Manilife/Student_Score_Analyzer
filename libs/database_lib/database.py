@@ -116,3 +116,28 @@ def drop_all_table_in_database():
     cursor.execute("DROP TABLE BangDiem;")
     cursor.execute("DROP TABLE SinhVien;")
     cursor.execute("DROP TABLE LopHoc;")
+
+def get_all_score_in_a_LopHoc(MLH):
+    cursor.execute("SELECT Diem FROM BangDiem Where MLH = ?", (MLH,))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
+def get_all_MLH():
+    cursor.execute("SELECT MLH FROM LopHoc")
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
+def get_name_LopHoc(MLH):
+    cursor.execute("SELECT Ten FROM LopHoc WHERE MLH = ?", (MLH,))
+    row = cursor.fetchone()
+    return row[0]
+
+def get_all_MLH_in_a_HocKy(HocKy):
+    cursor.execute("SELECT MLH FROM LopHoc Where HocKy = ?;", (HocKy,))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
+def get_score_a_subject_by_MLH_of_a_student(MSSV, MLH):
+    cursor.execute("SELECT Diem FROM BangDiem Where MSSV = ? AND MLH = ?;", (MSSV, MLH, ))
+    row = cursor.fetchone()
+    return row[0]
