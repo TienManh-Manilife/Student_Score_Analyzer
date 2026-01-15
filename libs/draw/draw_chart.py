@@ -1,6 +1,6 @@
 from typing import Counter
 import matplotlib.pyplot as plt
-from libs.database_lib.database import get_all_MLH, get_all_MLH_in_a_HocKy, get_score_a_subject_by_MLH_of_a_student
+from libs.database_lib.database import get_all_MLH, get_all_MLH_in_a_HocKy, get_score_a_subject_by_MLH_of_a_student, get_mean_all_score_in_a_LopHoc
 from libs.database_lib.evaluate_student_lib import change_score_to_word, get_all_MSSV, get_all_score_in_a_LopHoc, get_cpa_4, get_name_LopHoc, max_HocKy, get_gpa_4, get_name_student, evaluate_academic_perfomance
 import numpy as np
 import mplcursors
@@ -147,6 +147,33 @@ def draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(MSSV):
     fig.text(0.005, 0.15, evaluation_text, fontsize=6)
 
     fig.savefig(f"./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_{MSSV}.png")
+    plt.show()
+
+def draw_chart_scores_all_LopHoc():
+    fig, axes = plt.subplots(2, 2, figsize=(16,7))
+    ax1, ax2, ax3, ax4 = axes.flatten()
+    set_figure(fig, f"Điểm trung bình tất cả các lớp học")
+
+    all_MLH = get_all_MLH()
+    all_subjects = [get_name_LopHoc(mlh) for mlh in all_MLH]
+    all_scores = [get_mean_all_score_in_a_LopHoc(MLH) for MLH in all_MLH]
+    all_scores_word = [change_score_to_word(ans) for ans in all_scores]
+    evaluate = ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"]
+    all_count_academic_prefomance = Counter(all_scores_word)
+    count_evaluate = [all_count_academic_prefomance[ev] for ev in evaluate]
+
+    ax1 = set_ax1_plot(ax1, all_MLH, all_scores, "Điểm từng môn học", "Điểm - Môn tương ứng", "Môn học", "Điểm")
+    ax2 = set_ax2_hist(ax2, all_scores, "Điểm trung bình từng môn học", "Môn học", "Điểm")
+    ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực trung bình", "Số môn", 
+                      0.5, -0.25, "Số lượng môn theo học lực trung bình")
+    ax4 = set_ax4_boxplot(ax4, all_scores, "Điểm", 0.5, -0.25, "Phân bố điểm")
+
+    evaluation_text = ""
+    for i in range(0, len(all_subjects)):
+        evaluation_text += f"{all_MLH[i]}: {all_subjects[i]}\n"
+    fig.text(0.005, 0.15, evaluation_text, fontsize=6)
+
+    fig.savefig(f"./resources/output_images/draw_chart_scores_all_LopHoc.png")
     plt.show()
 
 def set_ax1_plot(ax1, x, y, title, LABEL, xlabel, ylabel):

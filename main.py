@@ -11,5 +11,6 @@ if __name__ == "__main__":
     # draw_chart_scores_all_students_in_a_LopHoc("INT2210")
     # draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(24020004, 3)
     # draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(24020013, 2)
-    draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(24020025)
-    draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(24020031)
+    # draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(24020025)
+    # draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(24020031)
+    draw_chart_scores_all_LopHoc()

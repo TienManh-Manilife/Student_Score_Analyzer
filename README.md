@@ -81,6 +81,9 @@
 ![./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020025.png](./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020025.png)  
 ![./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png](./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png)  
 #### Thống kê điểm trung bình của tất cả các môn học với nhau
+- Hướng dẫn vẽ: Sử dụng hàm sau:
+    - draw_chart_scores_all_LopHoc()
+![./resources/output_images/draw_chart_scores_all_LopHoc.png](./resources/output_images/draw_chart_scores_all_LopHoc.png)  
 ## Chức năng nâng cao
 #### Hồi quy
 #### Phân cụm

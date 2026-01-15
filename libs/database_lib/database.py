@@ -122,6 +122,12 @@ def get_all_score_in_a_LopHoc(MLH):
     rows = cursor.fetchall()
     return [row[0] for row in rows]
 
+def get_mean_all_score_in_a_LopHoc(MLH):
+    cursor.execute("SELECT Diem FROM BangDiem Where MLH = ?", (MLH,))
+    rows = cursor.fetchall()
+    scores = [row[0] for row in rows]
+    return round(np.mean(scores), 2)
+
 def get_all_MLH():
     cursor.execute("SELECT MLH FROM LopHoc")
     rows = cursor.fetchall()
