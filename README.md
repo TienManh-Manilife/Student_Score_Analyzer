@@ -58,6 +58,8 @@
 #### CPA của cả lớp  
 ![./resources/output_images/draw_chart_cpa_of_all_students.png](./resources/output_images/draw_chart_cpa_of_all_students.png)  
 #### Thống kê dữ liệu điểm của 1 môn học  
+![./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_FLF1107.png](./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_FLF1107.png)  
+![./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png](./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png)  
 #### Thống kê điểm từng môn trong 1 kỳ của 1 sinh viên
 #### Thống kê điểm tất cả các môn trong tất cả kì của sinh viên
 #### Thống kê điểm trung bình của tất cả các môn học với nhau

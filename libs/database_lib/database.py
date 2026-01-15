@@ -14,7 +14,7 @@ df_scores = pd.read_excel(path_scores_xlsx)
 
 def make_table_SinhVien():
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS SinhVienn (
+    CREATE TABLE IF NOT EXISTS SinhVien (
     MSSV INTEGER PRIMARY KEY,
     HoTen TEXT NOT NULL
     );
@@ -38,14 +38,14 @@ def make_table_BangDiem():
     MSSV INTEGER NOT NULL,
     Diem REAL NOT NULL,
     PRIMARY KEY (MLH, HocKy, MSSV),
-    FOREIGN KEY (MSSV) REFERENCES SinhVienn(MSSV),
+    FOREIGN KEY (MSSV) REFERENCES SinhVien(MSSV),
     FOREIGN KEY (MLH, HocKy) REFERENCES LopHoc(MLH, HocKy)
     );
     """)
 
 def insert_to_table_SinhVien(MSSV, HoTen):
     cursor.execute("""
-        INSERT OR REPLACE INTO SinhVienn (MSSV, HoTen) 
+        INSERT OR REPLACE INTO SinhVien (MSSV, HoTen) 
         VALUES (?, ?);
     """, (MSSV, HoTen))
     conn.commit()
@@ -79,7 +79,7 @@ def get_info_in_file_resources_database_students_xlsx():
     conn.close()
 
 def print_all_SinhVien():
-    cursor.execute("SELECT * FROM SinhVienn;")
+    cursor.execute("SELECT * FROM SinhVien;")
     rows = cursor.fetchall()
     for row in rows:
         print(row)
@@ -112,3 +112,7 @@ def print_all_BangDiem():
     for row in rows:
         print(row)
 
+def drop_all_table_in_database():
+    cursor.execute("DROP TABLE BangDiem;")
+    cursor.execute("DROP TABLE SinhVien;")
+    cursor.execute("DROP TABLE LopHoc;")

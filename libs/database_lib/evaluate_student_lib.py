@@ -6,7 +6,7 @@ max_HocKy = 4
 def get_cpa_10(MSSV):
     cursor.execute("""
         SELECT b.Diem
-        FROM SinhVienn s
+        FROM SinhVien s
         JOIN BangDiem b ON s.MSSV = b.MSSV
         WHERE s.MSSV = ?;
     """, (MSSV,))
@@ -17,7 +17,7 @@ def get_cpa_10(MSSV):
 def get_arr_cpa_10(MSSV):
     cursor.execute("""
         SELECT b.Diem
-        FROM SinhVienn s
+        FROM SinhVien s
         JOIN BangDiem b ON s.MSSV = b.MSSV
         WHERE s.MSSV = ?;
     """, (MSSV,))
@@ -33,7 +33,7 @@ def get_cpa_4(MSSV):
 def get_name_student(MSSV):
     cursor.execute("""
         SELECT HoTen
-        FROM SinhVienn
+        FROM SinhVien
         WHERE MSSV = ?;
     """, (MSSV,))
     row = cursor.fetchone()
@@ -42,7 +42,7 @@ def get_name_student(MSSV):
 def get_gpa_10(MSSV, HocKy):
     cursor.execute("""
         SELECT b.Diem
-        FROM SinhVienn s
+        FROM SinhVien s
         JOIN BangDiem b ON s.MSSV = b.MSSV
         WHERE s.MSSV = ? AND b.HocKy = ?;
     """, (MSSV, HocKy))
@@ -53,7 +53,7 @@ def get_gpa_10(MSSV, HocKy):
 def get_arr_gpa_10(MSSV, HocKy):
     cursor.execute("""
         SELECT b.Diem
-        FROM SinhVienn s
+        FROM SinhVien s
         JOIN BangDiem b ON s.MSSV = b.MSSV
         WHERE s.MSSV = ? AND b.HocKy = ?;
     """, (MSSV, HocKy))
@@ -69,7 +69,7 @@ def get_gpa_4(MSSV, HocKy):
 def get_info_sinhvien(MSSV):
     cursor.execute("""
         SELECT s.MSSV, s.HoTen, l.MLH, l.HocKy, l.Ten, b.Diem
-        FROM SinhVienn s
+        FROM SinhVien s
         JOIN BangDiem b ON s.MSSV = b.MSSV
         JOIN LopHoc l ON b.MLH = l.MLH AND b.HocKy = l.HocKy
         WHERE s.MSSV = ?;
@@ -147,7 +147,7 @@ def evaluate_student(MSSV, HocKy=None):
         f"Học lực trong kỳ {HocKy}: {evaluate_academic_perfomance(MSSV, HocKy)}"
     
 def get_all_MSSV():
-    cursor.execute("SELECT MSSV FROM SinhVienn;")
+    cursor.execute("SELECT MSSV FROM SinhVien;")
     rows = cursor.fetchall()
     return [row[0] for row in rows]
 
