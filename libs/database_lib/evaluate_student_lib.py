@@ -66,7 +66,7 @@ def get_arr_gpa_4(MSSV, HocKy):
 def get_gpa_4(MSSV, HocKy):
     return round(np.mean(get_arr_gpa_4(MSSV, HocKy)), 2)
 
-def print_info_sinhvien(MSSV):
+def get_info_sinhvien(MSSV):
     cursor.execute("""
         SELECT s.MSSV, s.HoTen, l.MLH, l.HocKy, l.Ten, b.Diem
         FROM SinhVienn s
