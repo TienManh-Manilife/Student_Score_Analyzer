@@ -4,6 +4,8 @@
 - [Dữ liệu](#dữ-liệu)
 - [Chức năng cơ bản](#chức-năng-cơ-bản)
 - [Chức năng nâng cao](#chức-năng-nâng-cao)
+- [Giấy phép](#giấy-phép)
+- [Liên hệ](#liên-hệ)
 ## Mục đích
 - Tự học python, lập dự án với python
 - Học và thực hành các thư viện phổ biến: Numpy, Matplotlib
@@ -47,8 +49,8 @@
 - Hướng dẫn vẽ: Sử dụng hàm sau trong main:
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
     - HocKy: Có các kỳ như sau: 1, 2, 3, 4  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_1.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_1.png)  
-![./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_4.png](./resources/output_images/draw_chart_gpa_of_all_students_a_HocKy_4.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_1.png](./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_1.png)  
+![./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_4.png](./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_4.png)  
 #### CPA của cả lớp  
 ![./resources/output_images/draw_chart_cpa_of_all_students.png](./resources/output_images/draw_chart_cpa_of_all_students.png)  
 #### Thống kê dữ liệu điểm của 1 môn học  
@@ -58,4 +60,8 @@
 ## Chức năng nâng cao
 #### Hồi quy
 #### Phân cụm
+## Giấy phép
+- Dự án này chỉ dùng để học tập
+## Liên hệ
+- Email: manilife217@gmail.com
 ##### Last update: 15/01/2026

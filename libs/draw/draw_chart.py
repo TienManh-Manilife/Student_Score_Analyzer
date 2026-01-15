@@ -1,6 +1,8 @@
 from typing import Counter
 import matplotlib.pyplot as plt
-from libs.database_lib.evaluate_student_lib import *
+from libs.database_lib.evaluate_student_lib import get_all_MSSV, get_cpa_4, max_HocKy, get_gpa_4, get_name_student, evaluate_academic_perfomance
+import numpy as np
+import mplcursors
 
 def draw_chart_each_gpa_of_a_student(MSSV):
     HocKy = [f"Học kỳ {HK}" for HK in range(1, max_HocKy+1)]
@@ -44,10 +46,10 @@ def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
 
     ax2 = set_ax2_hist(ax2, all_gpa_HocKy, "Chi tiết điểm số", "MSSV", "GPA")
 
-    ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
-
     ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
                       0.5, -0.25, "Số lượng sinh viên theo học lực")
+
+    ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
     fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_{HocKy}.png")
     plt.show()
@@ -66,27 +68,14 @@ def draw_chart_cpa_of_all_students():
     evaluation_text = get_evaluation_text(all_gpa_HocKy)
     fig.text(0.55, 0.2, evaluation_text)
 
-    ax1.plot(all_mssv, all_gpa_HocKy, "r-^", label="Điểm - MSSV tương ứng")
-    ax1.set_title("Chi tiết điểm số")
-    ax1.axhline(np.mean(all_gpa_HocKy), color="green", linestyle="--", label="Trung bình")
-    ax1.set_xlabel("MSSV")
-    ax1.set_ylabel("CPA")
-    ax1.legend()
+    ax1 = set_ax1_plot(ax1, all_mssv, all_gpa_HocKy, "Chi tiết điểm số", "Điểm - MSSV tương ứng", "MSSV", "CPA")
 
-    ax2.hist(all_gpa_HocKy)
-    ax2.set_title("Chi tiết điểm số")
-    ax2.set_xlabel("MSSV")
-    ax2.set_ylabel("CPA")
+    ax2 = set_ax2_hist(ax2, all_gpa_HocKy, "Chi tiết điểm số", "MSSV", "CPA")
 
-    ax4.boxplot(all_gpa_HocKy)
-    ax4.set_ylabel("CPA")
-    ax4.text(0.5, -0.25, "Phân bố CPA", ha='center', va='center', transform=ax4.transAxes, fontsize=12)
-    ax4.legend()
+    ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
+                      0.5, -0.25, "Số lượng sinh viên theo học lực")
 
-    ax3.bar(evaluate, count_evaluate, color="skyblue", edgecolor="black")
-    ax3.set_xlabel("Học lực")
-    ax3.set_ylabel("Số sinh viên")
-    ax3.text(0.5, -0.25, "Số lượng sinh viên theo học lực", ha='center', va='center', transform=ax3.transAxes, fontsize=12)
+    ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
     fig.savefig(f"./resources/output_images/draw_chart_cpa_of_all_students.png")
     plt.show()
@@ -97,6 +86,11 @@ def set_ax1_plot(ax1, x, y, title, LABEL, xlabel, ylabel):
     ax1.axhline(np.mean(y), color="green", linestyle="--", label="Trung bình")
     ax1.set_xlabel(xlabel)
     ax1.set_ylabel(ylabel)
+    scatter = ax1.scatter(x, y)
+    cursor = mplcursors.cursor(scatter, hover=True)
+    @cursor.connect("add")
+    def on_add(sel): 
+        sel.annotation.set_text(f"x={x[sel.index]}, y={y[sel.index]:.2f}")
     ax1.legend()
     return ax1
 
@@ -112,6 +106,11 @@ def set_ax3_bar(ax3, x, y, xlabel, ylabel, title_x, title_y, title):
     ax3.set_xlabel(xlabel)
     ax3.set_ylabel(ylabel)
     ax3.text(title_x, title_y, title, ha='center', va='center', transform=ax3.transAxes, fontsize=12)
+    scatter = ax3.scatter(x, y)
+    cursor = mplcursors.cursor(scatter, hover=True)
+    @cursor.connect("add")
+    def on_add(sel): 
+        sel.annotation.set_text(f"x={x[sel.index]}, y={y[sel.index]:.2f}")
     return ax3
 
 def set_ax4_boxplot(ax4, y, ylabel, title_x, title_y, xlabel):
