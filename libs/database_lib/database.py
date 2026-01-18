@@ -132,6 +132,11 @@ def get_all_MLH():
     rows = cursor.fetchall()
     return [row[0] for row in rows]
 
+def get_all_MLH_by_MSSV(MSSV):
+    cursor.execute("SELECT distinct MLH FROM BangDiem WHERE MSSV = ?", (MSSV,))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
 def get_name_LopHoc(MLH):
     cursor.execute("SELECT Ten FROM LopHoc WHERE MLH = ?", (MLH,))
     row = cursor.fetchone()

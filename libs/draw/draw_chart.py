@@ -1,6 +1,6 @@
 from typing import Counter
 import matplotlib.pyplot as plt
-from libs.database_lib.database import get_all_MLH, get_all_MLH_in_a_HocKy, get_score_a_subject_by_MLH_of_a_student, get_mean_all_score_in_a_LopHoc
+from libs.database_lib.database import get_all_MLH, get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_score_a_subject_by_MLH_of_a_student, get_mean_all_score_in_a_LopHoc
 from libs.database_lib.evaluate_student_lib import change_score_to_word, get_all_MSSV, get_all_score_in_a_LopHoc, get_cpa_4, get_name_LopHoc, max_HocKy, get_gpa_4, get_name_student, evaluate_academic_perfomance
 import numpy as np
 import mplcursors
@@ -26,7 +26,7 @@ def draw_chart_each_gpa_of_a_student(MSSV):
 
     fig.text(0.01, 0.8, evaluation_text)
     ax.legend()
-    fig.savefig(f"./resources/output_images/draw_chart_each_gpa_of_a_student_{MSSV}.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_each_gpa_of_a_student_{MSSV}.png")
     plt.show()
 
 def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
@@ -49,7 +49,7 @@ def draw_chart_gpa_of_all_students_each_HocKy(HocKy):
                       0.5, -0.25, "Số lượng sinh viên theo học lực")
     ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
-    fig.savefig(f"./resources/output_images/draw_chart_gpa_of_all_students_each_HocKy_{HocKy}.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_gpa_of_all_students_each_HocKy_{HocKy}.png")
     plt.show()
 
 def draw_chart_cpa_of_all_students():
@@ -72,7 +72,7 @@ def draw_chart_cpa_of_all_students():
                       0.5, -0.25, "Số lượng sinh viên theo học lực")
     ax4 = set_ax4_boxplot(ax4, all_gpa_HocKy, "GPA", 0.5, -0.25, "Phân bố GPA")
 
-    fig.savefig(f"./resources/output_images/draw_chart_cpa_of_all_students.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_cpa_of_all_students.png")
     plt.show()
 
 def draw_chart_scores_all_students_in_a_LopHoc(MLH):
@@ -92,7 +92,7 @@ def draw_chart_scores_all_students_in_a_LopHoc(MLH):
     ax3 = set_ax3_bar(ax3, evaluate, count_evaluate, "Học lực", "Số sinh viên", 
                       0.5, -0.25, "Số lượng sinh viên theo học lực")
     ax4 = set_ax4_boxplot(ax4, all_scores_10, "GPA", 0.5, -0.25, "Phân bố điểm")
-    fig.savefig(f"./resources/output_images/draw_chart_scores_all_students_in_a_LopHoc_{MLH}.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_scores_all_students_in_a_LopHoc_{MLH}.png")
     plt.show()
 
 def draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(MSSV, HocKy):
@@ -119,7 +119,7 @@ def draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(MSSV, HocKy):
         evaluation_text += f"{all_MLH[i]}: {all_subjects[i]} "
     fig.text(0.005, 0.93, evaluation_text)
 
-    fig.savefig(f"./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_{MSSV}_{HocKy}.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_{MSSV}_{HocKy}.png")
     plt.show()
 
 def draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(MSSV):
@@ -127,7 +127,7 @@ def draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(MSSV):
     ax1, ax2, ax3, ax4 = axes.flatten()
     set_figure(fig, f"Điểm các môn trong tất cả các kỳ của sinh viên {get_name_student(MSSV)} {MSSV}")
 
-    all_MLH = get_all_MLH()
+    all_MLH = get_all_MLH_by_MSSV(MSSV)
     all_subjects = [get_name_LopHoc(mlh) for mlh in all_MLH]
     all_scores = [get_score_a_subject_by_MLH_of_a_student(MSSV, MLH) for MLH in all_MLH]
     all_scores_word = [change_score_to_word(ans) for ans in all_scores]
@@ -146,7 +146,7 @@ def draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(MSSV):
         evaluation_text += f"{all_MLH[i]}: {all_subjects[i]}\n"
     fig.text(0.005, 0.15, evaluation_text, fontsize=6)
 
-    fig.savefig(f"./resources/output_images/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_{MSSV}.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_{MSSV}.png")
     plt.show()
 
 def draw_chart_scores_all_LopHoc():
@@ -171,9 +171,9 @@ def draw_chart_scores_all_LopHoc():
     evaluation_text = ""
     for i in range(0, len(all_subjects)):
         evaluation_text += f"{all_MLH[i]}: {all_subjects[i]}\n"
-    fig.text(0.005, 0.15, evaluation_text, fontsize=6)
+    fig.text(0.005, 0.01, evaluation_text, fontsize=6)
 
-    fig.savefig(f"./resources/output_images/draw_chart_scores_all_LopHoc.png")
+    fig.savefig(f"./resources/outputimages/draw_chart_scores_all_LopHoc.png")
     plt.show()
 
 def set_ax1_plot(ax1, x, y, title, LABEL, xlabel, ylabel):
