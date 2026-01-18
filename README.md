@@ -55,48 +55,53 @@
 #### GPA của 1 sinh viên trong tất cả các kỳ  
 - Hướng dẫn vẽ: Sử dụng hàm sau:  
     draw_chart_each_gpa_of_a_student(MSSV)  
-    - MSSV: Mã số sinh viên
-![./resources/outputimages/draw_chart_each_gpa_of_a_student_24020220.png](./resources/outputimages/draw_chart_each_gpa_of_a_student_24020220.png)
+    - MSSV: Mã số sinh viên  
+<img src="./resources/outputimages/draw_chart_each_gpa_of_a_student_24020220.png" width="60%">
+
 #### GPA của cả lớp trong 1 kỳ  
 - Hướng dẫn vẽ: Sử dụng hàm sau:  
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
-    - HocKy: Học kỳ. Có các kỳ như sau: 1, 2, 3, 4  
-![./resources/outputimages/draw_chart_gpa_of_all_students_each_HocKy_1.png](./resources/outputimages/draw_chart_gpa_of_all_students_each_HocKy_1.png)  
-![./resources/outputimages/draw_chart_gpa_of_all_students_each_HocKy_4.png](./resources/outputimages/draw_chart_gpa_of_all_students_each_HocKy_4.png)  
+    - HocKy: Học kỳ. Có các kỳ như sau: 1, 2, 3, 4, 5, 6, 7 
+<img src="./resources/outputimages/draw_chart_gpa_of_all_students_each_HocKy_4.png" width="60%">
+
 #### CPA của cả lớp  
 - Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_gpa_of_all_students_a_HocKy(HocKy)  
-    - HocKy Học kỳ. Có các học kỳ: 1, 2, 3, 4
-![./resources/outputimages/draw_chart_cpa_of_all_students.png](./resources/outputimages/draw_chart_cpa_of_all_students.png)  
+    - HocKy Học kỳ. Có các học kỳ: 1, 2, 3, 4, 5, 6, 7
+<img src="./resources/outputimages/draw_chart_cpa_of_all_students.png" width="60%">
+
 #### Thống kê dữ liệu điểm của 1 môn học  
 - Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_scores_all_students_in_a_LopHoc(MLH)  
-    - MLH là mã lớp học
-![./resources/outputimages/draw_chart_scores_all_students_in_a_LopHoc_FLF1107.png](./resources/outputimages/draw_chart_scores_all_students_in_a_LopHoc_FLF1107.png)  
-![./resources/outputimages/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png](./resources/outputimages/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png)  
+    - MLH là mã lớp học  
+<img src="./resources/outputimages/draw_chart_scores_all_students_in_a_LopHoc_INT2210.png" width="60%">  
+
 #### Thống kê điểm từng môn trong 1 kỳ của 1 sinh viên  
 - Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(MSSV, HocKy)  
-    - MSSV: Mã số sinh viên
-    - HocKy: Học kỳ
-![./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020004_3.png](./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020004_3.png)  
-![./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020013_2.png](./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020013_2.png)  
+    - MSSV: Mã số sinh viên  
+    - HocKy: Học kỳ  
+<img src="./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020013_2.png" width="60%">  
+
 #### Thống kê điểm tất cả các môn trong tất cả kì của sinh viên
 - Hướng dẫn vẽ: Sử dụng hàm sau:
     draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(MSSV)  
     - MSSV: Mã số sinh viên
-    - Vì số lượng môn rất nhiều nên là giá trị cột x bị chèn nhau, bạn có thể trỏ chuột vào các điểm, nó sẽ tự động hiện ra thông tin chi tiết.
-![./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020025.png](./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020025.png)  
-![./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png](./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png)  
+    - Vì số lượng môn rất nhiều nên là giá trị cột x bị chèn nhau, bạn có thể trỏ chuột vào các điểm, nó sẽ tự động hiện ra thông tin chi tiết.   
+<img src="./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_all_HocKy_24020031.png" width="60%">  
+
 #### Thống kê điểm trung bình của tất cả các môn học với nhau
 - Hướng dẫn vẽ: Sử dụng hàm sau:
     - draw_chart_scores_all_LopHoc()
-    - Vì số lượng môn rất nhiều nên là giá trị cột x bị chèn nhau, bạn có thể trỏ chuột vào các điểm, nó sẽ tự động hiện ra thông tin chi tiết.
-![./resources/outputimages/draw_chart_scores_all_LopHoc.png](./resources/outputimages/draw_chart_scores_all_LopHoc.png)  
+    - Vì số lượng môn rất nhiều nên là giá trị cột x bị chèn nhau, bạn có thể trỏ chuột vào các điểm, nó sẽ tự động hiện ra thông tin chi tiết.  
+<img src="./resources/outputimages/draw_chart_scores_all_LopHoc.png" width="60%">  
+
 ## Chức năng nâng cao
 #### Hồi quy
 #### Phân cụm
-#### Dự đoán khả năng làm khóa luận tốt nghiệp
+#### Dự đoán khả năng làm khóa luận tốt nghiệp của từng sinh viên
+#### Nhập và thay đổi thông tin sinh viên từ ảnh
+#### Phân tích khả năng sinh viên thông qua ảnh đồ thị học tập
 ## Giấy phép
 - Dự án này chỉ dùng để học tập
 ## Liên hệ
