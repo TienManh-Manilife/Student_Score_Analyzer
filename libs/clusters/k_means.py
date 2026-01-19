@@ -1,4 +1,3 @@
-from webbrowser import get
 from libs.database_lib.database import *
 from libs.database_lib.evaluate_student_lib import *
 from libs.draw.draw_chart import set_figure

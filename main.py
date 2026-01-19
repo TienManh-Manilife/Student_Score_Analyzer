@@ -3,6 +3,7 @@ from libs.database_lib.database import *
 from libs.database_lib.evaluate_student_lib import *
 from libs.draw.draw_chart import *
 from libs.clusters.k_means import *
+from libs.regression.regression_lib import *
 
 if __name__ == "__main__":
     # drop_all_table_in_database()
@@ -20,4 +21,6 @@ if __name__ == "__main__":
     # draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(24020031)
     # draw_chart_scores_all_LopHoc()
 
-    draw_chart_k_means()
+    # draw_chart_k_means()
+
+    draw()
