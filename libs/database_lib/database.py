@@ -186,4 +186,13 @@ def get_all_MLH_in_a_HocKy(HocKy):
 def get_score_a_subject_by_MLH_of_a_student(MSSV, MLH):
     cursor.execute("SELECT Diem FROM BangDiem Where MSSV = ? AND MLH = ?;", (MSSV, MLH, ))
     row = cursor.fetchone()
+    if row is None:
+        return None
+    return row[0]
+
+def get_time_of_a_Lophoc_by_MSSV(MLH, MSSV):
+    cursor.execute("SELECT ThoiGianHoc FROM ThoiGianHoc Where MSSV = ? AND MLH = ?;", (MSSV, MLH, ))
+    row = cursor.fetchone()
+    if row is None:
+        return None
     return row[0]

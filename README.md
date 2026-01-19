@@ -56,7 +56,7 @@
 9. evaluate_student(MSSV, HocKy=None): Đánh giá tất cả thông tin của 1 sinh viên
 10. get_all_MSSV() - get_all_MLH() - get_all_MLH_by_MSSV(MSSV): Trả về danh sách tất cả MSSV, Trả về danh sách tất cả mã lớp học MLH, Trả về danh sách tất cả mã lớp mà sinh viên có mã số MSSV theo học
 11. get_all_score_in_a_LopHoc(MLH): Trả về danh sách điểm của tất cả sinh viên trong lớp học đó
-12. 
+12. get_time_of_a_Lophoc_by_MSSV(MLH, MSSV): Trả về thời gian học môn đó của 1 sinh viên
 #### GPA của 1 sinh viên trong tất cả các kỳ  
 - Hướng dẫn vẽ: Sử dụng hàm sau:  
     draw_chart_each_gpa_of_a_student(MSSV)  
@@ -104,7 +104,16 @@
 ## Chức năng nâng cao
 #### Hồi quy
 #### Phân cụm
-#### Dự đoán khả năng làm khóa luận tốt nghiệp của từng sinh viên
+- Các tiêu chí phân cụm:
+    + Điểm số: Cao / Trung / Thấp
+    + Thời gian học: Nhiều / Vừa / Ít
+- Hướng dẫn vẽ: Sử dụng hàm sau:
+    draw_chart_k_means()   
+<img src="./resources/outputimages/draw_chart_k_means.png" width="60%">  
+
+#### Dự đoán khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên
+- Đặt vấn đề: Từ khả năng học như thế, các sinh viên sẽ làm Khóa luận / Đồ án tốt nghiệp như nào. Có thể dự đoán được chất lượng, cũng như là số điểm theo thời gian họ bỏ ra để hoàn thành hay không?
+- Yêu cầu: Có MSSV, người dùng nhập thời gian mà sinh viên đó làm làm Khóa luận / Đồ án vào để dự đoán điểm đạt được nếu như bỏ ra thời gian như trên
 #### Nhập và thay đổi thông tin sinh viên từ ảnh
 #### Phân tích khả năng sinh viên thông qua ảnh đồ thị học tập
 ## Giấy phép
