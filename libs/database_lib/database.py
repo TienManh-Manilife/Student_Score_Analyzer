@@ -6,11 +6,13 @@ path_students_db = "./resources/database/students.db"
 path_students_xlsx = "./resources/database/students.xlsx"
 path_classes_xlsx = "./resources/database/classes.xlsx"
 path_scores_xlsx = "./resources/database/scores.xlsx"
+path_time_xlsx = "./resources/database/time.xlsx"
 conn = sqlite3.connect(path_students_db)
 cursor = conn.cursor()
 df_students = pd.read_excel(path_students_xlsx)
 df_classes = pd.read_excel(path_classes_xlsx)
 df_scores = pd.read_excel(path_scores_xlsx)
+df_time = pd.read_excel(path_time_xlsx)
 
 def make_table_SinhVien():
     cursor.execute("""
@@ -26,7 +28,7 @@ def make_table_LopHoc():
     MLH TEXT NOT NULL,
     HocKy INTEGER NOT NULL,
     Ten TEXT NOT NULL,
-    PRIMARY KEY (MLH, HocKy)
+    PRIMARY KEY (MLH)
     );
     """)
 
@@ -37,11 +39,24 @@ def make_table_BangDiem():
     HocKy INTEGER NOT NULL,
     MSSV INTEGER NOT NULL,
     Diem REAL NOT NULL,
-    PRIMARY KEY (MLH, HocKy, MSSV),
+    PRIMARY KEY (MLH, MSSV),
     FOREIGN KEY (MSSV) REFERENCES SinhVien(MSSV),
-    FOREIGN KEY (MLH, HocKy) REFERENCES LopHoc(MLH, HocKy)
+    FOREIGN KEY (MLH) REFERENCES LopHoc(MLH)
     );
     """)
+
+def make_table_ThoiGianHoc():
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS ThoiGianHoc (
+    MSSV INTEGER NOT NULL,
+    MLH TEXT NOT NULL,
+    ThoiGianHoc REAL NOT NULL,
+    PRIMARY KEY (MLH, MSSV),
+    FOREIGN KEY (MSSV) REFERENCES SinhVien(MSSV),
+    FOREIGN KEY (MLH) REFERENCES LopHoc(MLH)
+    );
+    """)
+
 
 def insert_to_table_SinhVien(MSSV, HoTen):
     cursor.execute("""
@@ -64,11 +79,23 @@ def insert_to_table_BangDiem(MLH, HocKy, MSSV, Diem):
     """, (MLH, HocKy, MSSV, Diem))
     conn.commit()
 
+def insert_to_table_ThoiGianHoc(MSSV, MLH, ThoiGianHoc):
+    cursor.execute("""
+        INSERT OR REPLACE INTO ThoiGianHoc (MSSV, MLH, ThoiGianHoc) 
+        VALUES (?, ?, ?);
+    """, (MSSV, MLH, ThoiGianHoc))
+    conn.commit()
+
+def insert_to_all_table():
+    get_info_in_file_resources_database_students_xlsx()
+    get_info_in_file_resources_database_classes_xlsx()
+    get_info_in_file_resources_database_scores_xlsx()
 
 def make_all_tables():
     make_table_LopHoc()
     make_table_SinhVien()
     make_table_BangDiem()
+    make_table_ThoiGianHoc()
     conn.commit()
 
 def get_info_in_file_resources_database_students_xlsx():
@@ -76,6 +103,14 @@ def get_info_in_file_resources_database_students_xlsx():
         MSSV = int(row.iloc[0]) 
         HoTen = str(row.iloc[1]) 
         insert_to_table_SinhVien(MSSV, HoTen)
+
+def get_info_in_file_resources_database_time_xlsx():
+    for _, row in df_time.iterrows(): 
+        for i in range(0, 6):
+            MLH = str(row.iloc[i*3 + 0]) 
+            MSSV = int(row.iloc[i*3 + 1])
+            ThoiGianHoc = str(row.iloc[i*3 + 2]) 
+            insert_to_table_ThoiGianHoc(MSSV, MLH, ThoiGianHoc)
 
 def print_all_SinhVien():
     cursor.execute("SELECT * FROM SinhVien;")
@@ -115,6 +150,7 @@ def drop_all_table_in_database():
     cursor.execute("DROP TABLE BangDiem;")
     cursor.execute("DROP TABLE SinhVien;")
     cursor.execute("DROP TABLE LopHoc;")
+    cursor.execute("DROP TABLE ThoiGianHoc;")
 
 def get_all_score_in_a_LopHoc(MLH):
     cursor.execute("SELECT Diem FROM BangDiem Where MLH = ?", (MLH,))

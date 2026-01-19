@@ -10,7 +10,7 @@
 - [Liên hệ](#liên-hệ)
 ## Mục đích
 - Tự học python, lập dự án với python
-- Học và thực hành các thư viện phổ biến: Numpy, Matplotlib
+- Học và thực hành các thư viện phổ biến: Numpy, Matplotlib, pandas
 - Học cách thống kê và phân tích dữ liệu cơ bản
 - Học một số các kỹ thuật nâng cao: Hồi quy, Phân cụm K-Means để đánh giá sinh viên
 - Bắt đầu làm quen OpenCV -> Xử lý ảnh nếu yêu cầu thay đổi thông tin sinh viên là ảnh thay vì phải nhập excel
@@ -35,6 +35,11 @@
         - Mã số sinh viên: Như trên
         - Điểm: Vì bảo mật thông tin nên điểm số của tất cả sinh viên lấy ngẫu nhiên theo thuật toán tự bản thân đặt ra, không phải điểm thật của sinh viên
         - Khóa chính: Mã lớp học + Học kỳ + Mã số sinh viên
+    - Bảng thời gian học:
+        - Mã lớp học: Như trên
+        - Mã số sinh viên: Như trên
+        - Thời gian học: Random theo quy tắc tự đặt
+        - Khóa chính: Mã lớp học + Mã số sinh viên
 ## Chức năng cơ bản
 #### Một số hàm cần thiết khi sử dụng
 - Chú ý: 
