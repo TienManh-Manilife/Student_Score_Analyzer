@@ -21,12 +21,25 @@ def get_a_b_of_linear_regression(MSSV):
     time, scores = get_x_y_of_linear_regression(MSSV)
     return np.polyfit(time, scores, 1)
 
+def get_R2(MSSV):
+    time, scores = get_x_y_of_linear_regression(MSSV)
+    a, b = get_a_b_of_linear_regression(MSSV)
+    y_pred = a * time + b
+    ss_res = np.sum((scores - y_pred)**2) 
+    ss_tot = np.sum((scores - np.mean(scores))**2) 
+    r2 = 1 - ss_res/ss_tot
+    return round(r2, 2)
+
 def draw_linear_regression(MSSV):
     time, scores = get_x_y_of_linear_regression(MSSV)
     a, b = get_a_b_of_linear_regression(MSSV)
     plt.figure(figsize=(15, 7))
     plt.plot(time, a * time + b, color='red', label=f'y = {a:.2f}x + {b:.2f}')
     plt.scatter(time, scores, color='blue')
+    plt.text(0.05, 0.95, f" Hệ số R² xấp xỉ: {get_R2(MSSV)}", transform=plt.gca().transAxes, fontsize=12, verticalalignment='top')
+    plt.xlabel("Thời gian học")
+    plt.ylabel("Điểm số")
     set_figure(plt.gcf(), f"Hồi quy tuyến tính dự đoán điểm số theo thời gian học của sinh viên {get_name_student(MSSV)} {MSSV}")
+    plt.legend()
     plt.savefig(f"./resources/outputimages/draw_linear_regression_{MSSV}.png")
     plt.show()
