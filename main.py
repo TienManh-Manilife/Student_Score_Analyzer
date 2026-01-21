@@ -22,5 +22,4 @@ if __name__ == "__main__":
     # draw_chart_scores_all_LopHoc()
 
     # draw_chart_k_means()
-
-    draw()
+    draw_linear_regression(24020220)
