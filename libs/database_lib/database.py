@@ -3,6 +3,8 @@ from webbrowser import get
 import pandas as pd
 import numpy as np
 
+max_HocKy = 7
+
 path_students_db = "./resources/database/students.db"
 path_students_xlsx = "./resources/database/students.xlsx"
 path_classes_xlsx = "./resources/database/classes.xlsx"
@@ -244,3 +246,9 @@ def get_mean_time_a_HocKy_by_MSSV(MSSV, HocKy):
     rows = cursor.fetchall()
     times = [row[0] for row in rows]
     return round(np.mean(times), 2)
+
+def get_mean_time_all_HocKy(mssv):
+    arr = np.array([])
+    for hk in range(1, max_HocKy+1):
+        arr = np.append(arr, get_mean_time_a_HocKy_by_MSSV(mssv, hk))
+    return round(np.mean(arr), 2)
