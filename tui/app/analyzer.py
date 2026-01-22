@@ -2,6 +2,7 @@ from textual.app import *
 from textual.widgets import *
 from tui.screen.a_class_screen import AClassScreen
 from tui.screen.all_classes_screen import AllClassesScreen
+from tui.screen.all_students import AllStudentsScreen
 from tui.screen.database_screen import DatabaseScreen
 from tui.screen.menu_screen import MenuScreen
 
@@ -41,4 +42,8 @@ class AnalyzerApp(App):
         self.install_screen(
             AClassScreen(),
             name="AClassScreen"
+        )
+        self.install_screen(
+            AllStudentsScreen(),
+            name="AllStudentsScreen"
         )
