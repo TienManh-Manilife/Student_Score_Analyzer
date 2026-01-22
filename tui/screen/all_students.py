@@ -10,7 +10,9 @@ class AllStudentsScreen(BaseScreen):
     is_menu = False
 
     def compose_content(self) -> ComposeResult:
+        yield Static("Hiện thông tin tất cả sinh viên, mặc định sắp xếp theo MSSV")
         yield Button("Hiện thông tin tất cả sinh viên", id="get_all_MSSV_button")
+        yield Static("")
         yield Static("", id="output")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -23,6 +25,7 @@ class AllStudentsScreen(BaseScreen):
                 output += f"{mssv} - {get_name_student(mssv)}\n"
             output_widget = self.query_one("#output", Static)
             output_widget.update(output)
+            output = ""
 
     def on_key(self, event): 
         super().on_key(event)

@@ -13,7 +13,7 @@ class MenuScreen(BaseScreen):
         yield Button("Thao tác trong tất cả lớp học", id="all_classes_button") # get_all_MLH, get_all_MLH_in_a_HocKy
         yield Button("Thao tác trong 1 lớp học", id="a_class_button") # get_mean_all_score_in_a_LopHoc, get_name_LopHoc
 
-        yield Button("Thao tác trong tất cả sinh viên", id="all_students_button") # get_all_MSSV -> Sắp xếp theo tên, điểm, mssv,...
+        yield Button("Thao tác trong tất cả sinh viên", id="all_students_button") # get_all_MSSV
 
         yield Button("Thao tác trong 1 sinh viên", id="a_student_button") # get_all_MLH_by_MSSV, get_score_a_subject_by_MLH_of_a_student, get_time_of_a_Lophoc_by_MSSV
         # get_cpa_10, get_arr_cpa_10, get_arr_cpa_4, get_cpa_4, get_name_student, get_gpa_10, get_arr_gpa_10, get_arr_gpa_4, get_gpa_4, get_info_sinhvien
@@ -34,8 +34,8 @@ class MenuScreen(BaseScreen):
             self.app.push_screen("AClassScreen")
         elif button_id == "all_students_button":
             self.app.push_screen("AllStudentsScreen")
-        elif button_id == "conversion_and_evaluation_button":
-            return
+        elif button_id == "a_student_button":
+            self.app.push_screen("AStudentScreen")
         elif button_id == "draw_chart_button":
             return
         elif button_id == "change_data_button":
