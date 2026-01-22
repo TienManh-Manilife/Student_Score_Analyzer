@@ -1,6 +1,5 @@
 # DỰ ÁN TỰ HỌC CÁ NHÂN: THỐNG KÊ VÀ PHÂN TÍCH ĐIỂM SINH VIÊN 
 - (Đang phát triển)
-- Đang chuyển giao diện sang TUI
 ## Mục lục
 - [Mục đích](#mục-đích)
 - [Kiến thức](#kiến-thức)
@@ -76,9 +75,10 @@
     8. Hồi quy tuyến tính dự đoán điểm số theo thời gian học của sinh viên
     9. Phân cụm K-Means điểm trung bình theo thời gian học của sinh viên
 ### Thay đổi dữ liệu
-    1. Tạo tất cả bảng trong CSDL
-    2. Chèn dữ liệu từ xlsx vào tất cả bảng
-    3. Xóa tất cả bảng trong CSDL
+    1. Sửa đổi Họ tên trong bảng SinhVien
+    2. Sửa đổi Tên lớp học trong bảng LopHoc
+    3. Sửa đổi điểm trong bảng BangDiem
+    4. Sửa đổi thời gian học trong bảng ThoiGianHoc
 ### Dự đoán khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên
 - Đặt vấn đề: Từ khả năng học như thế, các sinh viên sẽ làm Khóa luận / Đồ án tốt nghiệp như nào. Có thể dự đoán được chất lượng, cũng như là số điểm theo thời gian họ bỏ ra để hoàn thành hay không?
 - Yêu cầu: Có MSSV, người dùng nhập thời gian mà sinh viên đó làm làm Khóa luận / Đồ án vào để dự đoán điểm đạt được nếu như bỏ ra thời gian như trên
