@@ -29,7 +29,7 @@ class MenuScreen(BaseScreen):
         if button_id == "database_button":
             self.app.push_screen("DatabaseScreen")
         elif button_id == "all_classes_button":
-            return
+            self.app.push_screen("AllClassesScreen")
         elif button_id == "a_class_button":
             return
         elif button_id == "a_student_button":
