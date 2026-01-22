@@ -68,7 +68,7 @@ Tách riêng các phần đảm bảo dễ mở rộng hơn trong tương lai:
         - Khóa chính: Mã số sinh viên
     - Bảng Lớp học:
         - Mã lớp học: Lấy chính xác mã của học phần chương trình đào tạo
-        - Học Kỳ: Có 4 kì (12425, 22425, 12526, 22526)
+        - Học Kỳ: Có 7 học kỳ: 1, 2, 3, 4, 5, 6, 7
         - Tên lớp học: Lấy chính xác tên của học phần chương trình đào tạo
         - Khóa chính: Mã lớp học
     - Bảng điểm lớp học:
@@ -83,39 +83,39 @@ Tách riêng các phần đảm bảo dễ mở rộng hơn trong tương lai:
         - Thời gian học: Điểm càng cao, thời gian học càng nhiều (Thời gian = a.Điểm + b + nhiễu) Với mỗi điểm, a = random.gauss(10, 0.5) và b = random.gauss(2, 0.5) và nhiễu = random.gauss(0, 0.2)
         - Khóa chính: Mã lớp học + Mã số sinh viên
 ## Chức năng + Xem trước chức năng
-<img src="./resources/outputimages/app.png" width=40%>
-<img src="./resources/outputimages/menu_screen.png" width=40%>
+<img src="./resources/outputimages/app.png" width=30%>
+<img src="./resources/outputimages/menu_screen.png" width=30%>
 
 ### Thao tác trong cơ sở dữ liệu
     1. Tạo tất cả bảng trong CSDL
     2. Chèn dữ liệu từ xlsx vào tất cả bảng
     3. Xóa tất cả bảng trong CSDL
-<img src="./resources/outputimages/database_screen.png" width=40%>
+<img src="./resources/outputimages/database_screen.png" width=30%>
 
 ### Thao tác trong tất cả lớp học
     1. Hiện tất cả mã lớp học
     2. Hiện tất cả mã lớp học trong 1 học kỳ
-<img src="./resources/outputimages/all_classes_screen.png" width=40%>
+<img src="./resources/outputimages/all_classes_screen.png" width=30%>
 
 ### Thao tác trong 1 lớp học
     1. Hiện tên lớp học
     2. Hiện điểm trung bình các sinh viên trong 1 lớp
-<img src="./resources/outputimages/a_class_screen.png" width=40%>
+<img src="./resources/outputimages/a_class_screen.png" width=30%>
 
 ### Thao tác trong tất cả sinh viên
     1. Hiện thông tin tất cả sinh viên
-<img src="./resources/outputimages/all_students_screen.png" width=40%>
+<img src="./resources/outputimages/all_students_screen.png" width=30%>
 
 ### Thao tác trong 1 sinh viên
     1. Hiện CPA và các lớp học mà sinh viên theo học, điểm từng môn và thời gian học
     2. Hiện GPA và danh sách các môn của 1 học kỳ của 1 sinh viên
     3. Hiện tất cả thông tin trong CSDL của sinh viên dưới dạng các bộ sau khi join
     4. Đánh giá sinh viên theo từng kỳ hoặc toàn bộ tất cả các kỳ. Nếu không nhập học kỳ thì đánh giá toàn bộ tất cả các kỳ
-<img src="./resources/outputimages/a_student_screen.png" width=40%>
+<img src="./resources/outputimages/a_student_screen.png" width=30%>
 
 ### Cách quy đổi
     Hiện quy đổi các đầu điểm
-<img src="./resources/outputimages/conversion_screen.png" width=40%>
+<img src="./resources/outputimages/conversion_screen.png" width=30%>
 
 ### Vẽ biểu đồ
     <Các chức năng vẽ biểu đồ sẽ tự động lưu ảnh vào <./resources/outputimages/...>
@@ -128,20 +128,31 @@ Tách riêng các phần đảm bảo dễ mở rộng hơn trong tương lai:
     7. Vẽ biểu đồ thống kê điểm tất cả lớp học
     8. Hồi quy tuyến tính dự đoán điểm số theo thời gian học của sinh viên
     9. Phân cụm K-Means điểm trung bình theo thời gian học của sinh viên
-<img src="./resources/outputimages/draw_chart_screen.png" width=40%> <img src="./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020220_1.png" width=40%> <img src="./resources/outputimages/draw_chart_k_means_3.png" width=40%> <img src="./resources/outputimages/draw_chart_scores_all_LopHoc.png" width=40%>
+<img src="./resources/outputimages/draw_chart_screen.png" width=30%> <img src="./resources/outputimages/draw_chart_scores_all_subjects_of_a_student_in_a_HocKy_24020220_1.png" width=40%> <img src="./resources/outputimages/draw_chart_k_means_3.png" width=40%> <img src="./resources/outputimages/draw_chart_scores_all_LopHoc.png" width=40%>
 
 ### Thay đổi dữ liệu
     1. Sửa đổi Họ tên trong bảng SinhVien
     2. Sửa đổi Tên lớp học trong bảng LopHoc
     3. Sửa đổi điểm trong bảng BangDiem
     4. Sửa đổi thời gian học trong bảng ThoiGianHoc
-<img src="./resources/outputimages/change_data_screen.png" width=40%>
+<img src="./resources/outputimages/change_data_screen.png" width=30%>
 
-### Dự đoán khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên
-- Đặt vấn đề: Từ khả năng học như thế, các sinh viên sẽ làm Khóa luận / Đồ án tốt nghiệp như nào. Có thể dự đoán được chất lượng, cũng như là số điểm theo thời gian họ bỏ ra để hoàn thành hay không?
-- Yêu cầu: Có MSSV, người dùng nhập thời gian mà sinh viên đó làm làm Khóa luận / Đồ án vào để dự đoán điểm đạt được nếu như bỏ ra thời gian như trên
-#### Nhập và thay đổi thông tin sinh viên từ ảnh
-#### Phân tích khả năng sinh viên thông qua ảnh đồ thị học tập
+### Dự đoán khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên (Dự đoán đơn thuần)
+- Đặt vấn đề: Từ khả năng học như thế, các sinh viên sẽ làm Khóa luận / Đồ án tốt nghiệp như nào. 
+    Có thể dự đoán được chất lượng, cũng như là số điểm theo thời gian họ bỏ ra để hoàn thành hay không?
+- Dữ liệu biết trước:
+    + Các điểm số của 7 kỳ trong CSDL
+    + Thời gian làm khóa luận / đồ án mỗi sinh viên bằng nhau và bằng 1 kỳ học (kỳ cuối)
+    + Thời gian làm khóa luận / đồ án thực tế của mỗi sinh viên là khác nhau dựa trên thời gian học trong CSDL
+- Yêu cầu đầu ra:
+    + Phân tích hành vi của từng sinh viên, họ có thể dành ra thời gian bao nhiêu để làm khóa luận / đồ án
+    + Từ thời gian đó, chất lượng của họ như nào
+
+#### Nhận và thay đổi thông tin sinh viên từ ảnh
+- Đặt vấn đề: Không phải lúc nào cũng có thời gian chỉnh sửa thông tin về dạng chuẩn, hoặc là phải cập nhật từng thông tin một. Cần xử lý ảnh cơ bản để cập nhật nhanh các thông tin từ ảnh, đỡ mất thời gian nhập rất lâu
+- Dữ liệu biết trước: Ảnh bảng dữ liệu, dạng chuẩn ngay ngắn, tên cột rõ ràng
+- Yêu cầu: Cập nhật thông tin trong CSDL thành thông tin giống trong ảnh
+
 ## Giấy phép
 - Dự án này chỉ dùng để học tập
 ## Liên hệ
