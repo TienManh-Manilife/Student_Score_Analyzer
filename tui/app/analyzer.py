@@ -4,6 +4,7 @@ from tui.screen.a_class_screen import AClassScreen
 from tui.screen.a_student_screen import AStudentScreen
 from tui.screen.all_classes_screen import AllClassesScreen
 from tui.screen.all_students import AllStudentsScreen
+from tui.screen.conversion_screen import ConversionScreen
 from tui.screen.database_screen import DatabaseScreen
 from tui.screen.menu_screen import MenuScreen
 
@@ -51,4 +52,8 @@ class AnalyzerApp(App):
         self.install_screen(
             AStudentScreen(),
             name="AStudentScreen"
+        )
+        self.install_screen(
+            ConversionScreen(),
+            name="ConversionScreen"
         )
