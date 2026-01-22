@@ -1,6 +1,6 @@
 from textual.app import *
 from textual.widgets import *
-from tui.screen.make_all_tables_screen import MakeAllTablesScreen
+from tui.screen.database_screen import DatabaseScreen
 from tui.screen.menu_screen import MenuScreen
 
 class AnalyzerApp(App):
@@ -29,6 +29,6 @@ class AnalyzerApp(App):
             name="MenuScreen"
         )
         self.install_screen(
-            MakeAllTablesScreen(),
-            name="MakeAllTablesScreen"
+            DatabaseScreen(),
+            name="DatabaseScreen"
         )
