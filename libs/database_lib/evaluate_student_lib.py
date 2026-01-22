@@ -68,15 +68,17 @@ def get_gpa_4(MSSV, HocKy):
 
 def get_info_sinhvien(MSSV):
     cursor.execute("""
-        SELECT s.MSSV, s.HoTen, l.MLH, l.HocKy, l.Ten, b.Diem
+        SELECT *
         FROM SinhVien s
         JOIN BangDiem b ON s.MSSV = b.MSSV
         JOIN LopHoc l ON b.MLH = l.MLH AND b.HocKy = l.HocKy
+        JOIN ThoiGianHoc t ON s.MSSV = t.MSSV AND l.MLH = t.MLH
         WHERE s.MSSV = ?;
     """, (MSSV,))
     rows = cursor.fetchall()
     for row in rows:
         print(row)
+    return rows
 
 def change_score_to_4(score):
     if score >= 9.0:
