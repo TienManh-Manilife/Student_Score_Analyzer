@@ -23,3 +23,27 @@ def predict_period_of_score_to_write(mssv):
     low_score = predict_score - hs*get_rmse(mssv)
     high_score = predict_score + hs*get_rmse(mssv)
     return round(low_score, 2), round(high_score, 2)
+
+def get_evaluation_to_write(mssv):
+    low, high = predict_period_of_score_to_write(mssv)
+    output = f"Dự đoán khả năng làm khóa luận / đồ án của sinh viên {get_name_student(mssv)} {mssv}\n"
+    output += f"Khoảng điểm dự đoán: {low} - {high}\n"
+    if high - low >= 0.5:
+        return "Khoảng cách điểm khá lớn! Cần xem lại!"
+    for i in [4, 5, 5.5, 6.5, 7, 8, 8.5, 9]:
+        if i < low and i < high:
+            continue
+        if low == i:
+            output += f"100% đạt {change_score_to_word(i)}\n"
+            break
+        elif high == i:
+            output += f"100% đạt {change_score_to_word(i - 0.01)}\n"
+            break
+        elif low <= i and i <= high:
+            output += f"Tỉ lệ đạt {change_score_to_word(i - 0.1)}: {round((i - low)*100/(high - low), 0)}%\n" \
+                f"Tỉ lệ đạt {change_score_to_word(i+0.1)}: {round((high - i)*100/(high - low), 0)}%\n"
+            break
+        else:
+            output += f"100% đạt {change_score_to_word(low)}"
+            break
+    return output
