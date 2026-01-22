@@ -40,9 +40,9 @@ class MenuScreen(BaseScreen):
         elif button_id == "conversion_button":
             self.app.push_screen("ConversionScreen")
         elif button_id == "draw_chart_button":
-            return
+            self.app.push_screen("DrawChartScreen")
         elif button_id == "change_data_button":
-            return
+            self.app.push_screen("ChangeDataScreen")
 
     def on_key(self, event): 
         super().on_key(event)

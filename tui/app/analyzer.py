@@ -4,8 +4,10 @@ from tui.screen.a_class_screen import AClassScreen
 from tui.screen.a_student_screen import AStudentScreen
 from tui.screen.all_classes_screen import AllClassesScreen
 from tui.screen.all_students import AllStudentsScreen
+from tui.screen.change_data_screen import ChangeDataScreen
 from tui.screen.conversion_screen import ConversionScreen
 from tui.screen.database_screen import DatabaseScreen
+from tui.screen.draw_chart_screen import DrawChartScreen
 from tui.screen.menu_screen import MenuScreen
 
 class AnalyzerApp(App):
@@ -56,4 +58,12 @@ class AnalyzerApp(App):
         self.install_screen(
             ConversionScreen(),
             name="ConversionScreen"
+        )
+        self.install_screen(
+            DrawChartScreen(),
+            name="DrawChartScreen"
+        )
+        self.install_screen(
+            ChangeDataScreen(),
+            name="ChangeDataScreen"
         )

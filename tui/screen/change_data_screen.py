@@ -2,8 +2,8 @@ from textual.app import *
 from textual.widgets import *
 from tui.screen.base_screen import BaseScreen
 
-class ConversionScreen(BaseScreen):
-    title = "Cách quy đổi"
+class ChangeDataScreen(BaseScreen):
+    title = "Thay đổi dữ liệu"
     is_menu = False
 
     def compose_content(self) -> ComposeResult:
