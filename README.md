@@ -102,7 +102,9 @@
 <img src="./resources/outputimages/draw_chart_scores_all_LopHoc.png" width="60%">  
 
 ## Chức năng nâng cao
-#### Hồi quy
+#### Hồi quy  
+<img src="./resources/outputimages/draw_linear_regression_24020220.png" width="60%">  
+
 #### Phân cụm
 - Các tiêu chí phân cụm:
     + Điểm số: Cao / Trung / Thấp

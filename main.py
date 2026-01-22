@@ -21,5 +21,5 @@ if __name__ == "__main__":
     # draw_chart_scores_all_subjects_of_a_student_in_all_HocKy(24020031)
     # draw_chart_scores_all_LopHoc()
 
-    # draw_chart_k_means()
-    draw_linear_regression(24020220)
+    draw_chart_k_means()
+    # draw_linear_regression(24020220)

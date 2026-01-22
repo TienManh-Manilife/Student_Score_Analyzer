@@ -33,19 +33,16 @@ def k_means_clustering(x, y, clusters=9):
 
 def draw_chart_k_means():
     x, y = set_x_y()
-    k = 9
+    k = 3
     labels, centroids = k_means_clustering(x, y, clusters=k)
-    time_mid = np.median(x)
-    score_mid = np.median(y)
     plt.figure(figsize=(15, 7))
     for cluster_id in range(k):
         mask = labels == cluster_id
         cx, cy = centroids[cluster_id]
-        cluster_name = get_cluster_name(cx, cy, time_mid, score_mid)
         plt.scatter(
             x[mask],
             y[mask],
-            label=cluster_name,
+            label=f"Nhóm {cluster_id + 1}",
             alpha=0.7
         )
     plt.xlabel("Thời gian học (giờ)")
@@ -58,21 +55,3 @@ def draw_chart_k_means():
     plt.grid(True, linestyle="--", alpha=0.3)
     plt.savefig("./resources/outputimages/draw_chart_k_means.png")
     plt.show()
-
-
-def get_cluster_name(time, score, time_mid, score_mid):
-    if time < time_mid:
-        time_label = "Học ít"
-    elif time > time_mid:
-        time_label = "Học nhiều"
-    else:
-        time_label = "Học vừa"
-
-    if score < score_mid:
-        score_label = "Điểm thấp"
-    elif score > score_mid:
-        score_label = "Điểm cao"
-    else:
-        score_label = "Điểm trung"
-
-    return f"{time_label} - {score_label}"
