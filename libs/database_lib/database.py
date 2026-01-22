@@ -226,7 +226,7 @@ def change_Diem_of_table_BangDiem(MLH_old, MSSV_old, Diem_new):
     """, (Diem_new, MLH_old, MSSV_old))
     conn.commit()
 
-def change_data_of_table_ThoiGianHoc(MSSV_old, MLH_old, ThoiGianHoc_new):
+def change_ThoiGianHoc_of_table_ThoiGianHoc(MSSV_old, MLH_old, ThoiGianHoc_new):
     cursor.execute("""
         UPDATE ThoiGianHoc 
         SET ThoiGianHoc = ?
