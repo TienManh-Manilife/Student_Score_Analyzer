@@ -1,5 +1,6 @@
 from textual.app import *
 from textual.widgets import *
+from tui.screen.make_all_tables_screen import MakeAllTablesScreen
 from tui.screen.menu_screen import MenuScreen
 
 class AnalyzerApp(App):
@@ -21,3 +22,13 @@ class AnalyzerApp(App):
     def on_key(self, event): 
         if event.key in ("escape"):
             self.exit()
+
+    def on_mount(self):
+        self.install_screen(
+            MenuScreen(),
+            name="MenuScreen"
+        )
+        self.install_screen(
+            MakeAllTablesScreen(),
+            name="MakeAllTablesScreen"
+        )
