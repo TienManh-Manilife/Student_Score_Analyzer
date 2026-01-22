@@ -3,6 +3,7 @@ from libs.database_lib.database import *
 from libs.database_lib.evaluate_student_lib import *
 from libs.draw.draw_chart import set_figure
 import matplotlib.pyplot as plt
+from sklearn.metrics import mean_squared_error
 
 def get_x_y_of_linear_regression(MSSV):
     mlh = get_all_MLH_by_MSSV(MSSV)
@@ -29,6 +30,12 @@ def get_R2(MSSV):
     ss_tot = np.sum((scores - np.mean(scores))**2) 
     r2 = 1 - ss_res/ss_tot
     return round(r2, 2)
+
+def get_rmse(mssv):
+    x, y = get_x_y_of_linear_regression(mssv)
+    a, b = get_a_b_of_linear_regression(mssv)
+    y_pred = a*x + b
+    return np.sqrt(mean_squared_error(y, y_pred))
 
 def draw_linear_regression(MSSV):
     time, scores = get_x_y_of_linear_regression(MSSV)

@@ -252,3 +252,12 @@ def get_mean_time_all_HocKy(mssv):
     for hk in range(1, max_HocKy+1):
         arr = np.append(arr, get_mean_time_a_HocKy_by_MSSV(mssv, hk))
     return round(np.mean(arr), 2)
+
+def get_arr_all_time_of_a_student(mssv):
+    cursor.execute("""
+        SELECT ThoiGianHoc FROM ThoiGianHoc 
+        JOIN LopHoc ON ThoiGianHoc.MLH = LopHoc.MLH
+        WHERE ThoiGianHoc.MSSV = ?;
+    """, (mssv, ))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
