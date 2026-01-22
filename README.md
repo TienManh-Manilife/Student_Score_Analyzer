@@ -3,7 +3,7 @@
 - Đang chuyển giao diện sang TUI
 ## Mục lục
 - [Mục đích](#mục-đích)
-- [Dữ liệu](#kiến-thức)
+- [Kiến thức](#kiến-thức)
 - [Dữ liệu](#dữ-liệu)
 - [Chức năng cơ bản](#chức-năng-cơ-bản)
 - [Chức năng nâng cao](#chức-năng-nâng-cao)
