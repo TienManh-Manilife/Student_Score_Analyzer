@@ -1,4 +1,5 @@
 import sqlite3
+from webbrowser import get
 import pandas as pd
 import numpy as np
 
@@ -233,3 +234,13 @@ def change_ThoiGianHoc_of_table_ThoiGianHoc(MSSV_old, MLH_old, ThoiGianHoc_new):
         WHERE MSSV = ? AND MLH = ?;
     """, (ThoiGianHoc_new, MSSV_old, MLH_old))
     conn.commit()
+
+def get_mean_time_a_HocKy_by_MSSV(MSSV, HocKy):
+    cursor.execute("""
+        SELECT ThoiGianHoc FROM ThoiGianHoc 
+        JOIN LopHoc ON ThoiGianHoc.MLH = LopHoc.MLH
+        WHERE ThoiGianHoc.MSSV = ? AND LopHoc.HocKy = ?;
+    """, (MSSV, HocKy))
+    rows = cursor.fetchall()
+    times = [row[0] for row in rows]
+    return round(np.mean(times), 2)
