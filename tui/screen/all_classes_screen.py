@@ -13,7 +13,7 @@ class AllClassesScreen(BaseScreen):
         yield Static("")
         yield Static("")
         yield Input(placeholder="Nhập học kỳ là 1 số (1, 2, 3, 4, 5, 6, 7)", id="hoc_ky_input")
-        yield Button("Hiện ra tất cả mã lớp học trong 1 học kỳ, điền học kỳ vào bên trên", id="get_all_MLH_in_a_HocKy_button")
+        yield Button("Hiện tất cả mã lớp học trong 1 học kỳ, điền học kỳ vào bên trên", id="get_all_MLH_in_a_HocKy_button")
         yield Static("")
         yield Static("")
         yield Static("THÔNG TIN ĐẦU RA:")
