@@ -1,5 +1,6 @@
 # DỰ ÁN TỰ HỌC CÁ NHÂN: THỐNG KÊ VÀ PHÂN TÍCH ĐIỂM SINH VIÊN 
 - (Đang phát triển)
+- Đang chuyển giao diện sang TUI
 ## Mục lục
 - [Mục đích](#mục-đích)
 - [Dữ liệu](#kiến-thức)
@@ -106,12 +107,12 @@
 <img src="./resources/outputimages/draw_linear_regression_24020220.png" width="60%">  
 
 #### Phân cụm
-- Các tiêu chí phân cụm:
-    + Điểm số: Cao / Trung / Thấp
-    + Thời gian học: Nhiều / Vừa / Ít
+- Phân thành k cụm, mặc định là 3
 - Hướng dẫn vẽ: Sử dụng hàm sau:
-    draw_chart_k_means()   
-<img src="./resources/outputimages/draw_chart_k_means.png" width="60%">  
+    draw_chart_k_means(k)   
+    - Với k là số cụm  
+<img src="./resources/outputimages/draw_chart_k_means_3.png" width="60%">  
+<img src="./resources/outputimages/draw_chart_k_means_6.png" width="60%">  
 
 #### Dự đoán khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên
 - Đặt vấn đề: Từ khả năng học như thế, các sinh viên sẽ làm Khóa luận / Đồ án tốt nghiệp như nào. Có thể dự đoán được chất lượng, cũng như là số điểm theo thời gian họ bỏ ra để hoàn thành hay không?
@@ -122,4 +123,4 @@
 - Dự án này chỉ dùng để học tập
 ## Liên hệ
 - Email: manilife217@gmail.com
-##### Last update: 18/01/2026
+##### Last update: 22/01/2026

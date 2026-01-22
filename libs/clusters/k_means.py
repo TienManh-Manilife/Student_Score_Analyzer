@@ -31,9 +31,8 @@ def k_means_clustering(x, y, clusters=9):
     return labels, centroids
 
 
-def draw_chart_k_means():
+def draw_chart_k_means(k=3):
     x, y = set_x_y()
-    k = 3
     labels, centroids = k_means_clustering(x, y, clusters=k)
     plt.figure(figsize=(15, 7))
     for cluster_id in range(k):
@@ -53,5 +52,5 @@ def draw_chart_k_means():
     )
     plt.legend(title="Nhóm sinh viên")
     plt.grid(True, linestyle="--", alpha=0.3)
-    plt.savefig("./resources/outputimages/draw_chart_k_means.png")
+    plt.savefig(f"./resources/outputimages/draw_chart_k_means_{k}.png")
     plt.show()
