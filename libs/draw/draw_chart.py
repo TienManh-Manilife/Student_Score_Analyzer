@@ -1,6 +1,6 @@
 from typing import Counter
 import matplotlib.pyplot as plt
-from libs.database_lib.database import get_all_MLH, get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_score_a_subject_by_MLH_of_a_student, get_mean_all_score_in_a_LopHoc
+from libs.database_lib.database import get_all_MLH, get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_all_MLH_in_a_HocKy_of_a_student, get_score_a_subject_by_MLH_of_a_student, get_mean_all_score_in_a_LopHoc
 from libs.database_lib.evaluate_student_lib import change_score_to_word, get_all_MSSV, get_all_score_in_a_LopHoc, get_cpa_4, get_name_LopHoc, max_HocKy, get_gpa_4, get_name_student, evaluate_academic_perfomance
 import numpy as np
 import mplcursors
@@ -100,9 +100,14 @@ def draw_chart_scores_all_subjects_of_a_student_in_a_HocKy(MSSV, HocKy):
     ax1, ax2, ax3, ax4 = axes.flatten()
     set_figure(fig, f"Điểm các môn trong kỳ {HocKy} của sinh viên {get_name_student(MSSV)} {MSSV}")
 
-    all_MLH = get_all_MLH_in_a_HocKy(HocKy)
+    all_MLH = get_all_MLH_in_a_HocKy_of_a_student(MSSV, HocKy)
     all_subjects = [get_name_LopHoc(mlh) for mlh in all_MLH]
-    all_scores = [get_score_a_subject_by_MLH_of_a_student(MSSV, MLH) for MLH in all_MLH]
+    all_scores = [
+    score
+    for MLH in all_MLH
+    if (score := get_score_a_subject_by_MLH_of_a_student(MSSV, MLH)) is not None
+    ]
+
     all_scores_word = [change_score_to_word(ans) for ans in all_scores]
     evaluate = ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"]
     all_count_academic_prefomance = Counter(all_scores_word)

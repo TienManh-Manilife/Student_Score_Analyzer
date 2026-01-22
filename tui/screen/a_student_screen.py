@@ -1,7 +1,7 @@
 from webbrowser import get
 from textual.app import *
 from textual.widgets import *
-from libs.database_lib.database import get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_name_LopHoc, get_score_a_subject_by_MLH_of_a_student, get_time_of_a_Lophoc_by_MSSV
+from libs.database_lib.database import get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_all_MLH_in_a_HocKy_of_a_student, get_name_LopHoc, get_score_a_subject_by_MLH_of_a_student, get_time_of_a_Lophoc_by_MSSV
 from libs.database_lib.evaluate_student_lib import change_score_to_word, evaluate_student, get_cpa_10, get_cpa_4, get_gpa_10, get_gpa_4, get_info_sinhvien, get_name_student
 from tui.screen.base_screen import BaseScreen
 
@@ -66,7 +66,7 @@ class AStudentScreen(BaseScreen):
                 hk = int(self.query_one("#hoc_ky_input2", Input).value)
                 output = f"GPA kỳ {hk} của sinh viên {mssv} - {get_name_student(mssv)}:\n Hệ 10: {get_gpa_10(mssv, hk)} - Hệ 4: {get_gpa_4(mssv, hk)}\n"
                 output += f"Các lớp học theo học trong học kỳ {hk}:\n"
-                MLH = get_all_MLH_in_a_HocKy(hk)
+                MLH = get_all_MLH_in_a_HocKy_of_a_student(mssv, hk)
                 for mlh in MLH:
                     score = get_score_a_subject_by_MLH_of_a_student(mssv, mlh)
                     class_name = get_name_LopHoc(mlh)

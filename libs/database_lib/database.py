@@ -196,3 +196,8 @@ def get_time_of_a_Lophoc_by_MSSV(MLH, MSSV):
     if row is None:
         return None
     return row[0]
+
+def get_all_MLH_in_a_HocKy_of_a_student(MSSV, HocKy):
+    cursor.execute("SELECT distinct BangDiem.MLH FROM LopHoc Join BangDiem ON LopHoc.MLH = BangDiem.MLH WHERE BangDiem.HocKy = ? AND BangDiem.MSSV = ?;", (HocKy, MSSV))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
