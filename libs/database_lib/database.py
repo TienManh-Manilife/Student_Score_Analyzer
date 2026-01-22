@@ -201,3 +201,35 @@ def get_all_MLH_in_a_HocKy_of_a_student(MSSV, HocKy):
     cursor.execute("SELECT distinct BangDiem.MLH FROM LopHoc Join BangDiem ON LopHoc.MLH = BangDiem.MLH WHERE BangDiem.HocKy = ? AND BangDiem.MSSV = ?;", (HocKy, MSSV))
     rows = cursor.fetchall()
     return [row[0] for row in rows]
+
+def change_data_of_table_SinhVien(MSSV_old, MSSV_new, HoTen_new):
+    cursor.execute("""
+        UPDATE SinhVien 
+        SET MSSV = ?, HoTen = ?
+        WHERE MSSV = ?;
+    """, (MSSV_new, HoTen_new, MSSV_old))
+    conn.commit()
+
+def change_data_of_table_LopHoc(MLH_old, MLH_new, HocKy_new, Ten_new):
+    cursor.execute("""
+        UPDATE LopHoc 
+        SET MLH = ?, HocKy = ?, Ten = ?
+        WHERE MLH = ?;
+    """, (MLH_new, HocKy_new, Ten_new, MLH_old))
+    conn.commit()
+
+def change_data_of_table_BangDiem(MLH_old, MSSV_old, MLH_new, HocKy_new, MSSV_new, Diem_new):
+    cursor.execute("""
+        UPDATE BangDiem 
+        SET MLH = ?, HocKy = ?, MSSV = ?, Diem = ?
+        WHERE MLH = ? AND MSSV = ?;
+    """, (MLH_new, HocKy_new, MSSV_new, Diem_new, MLH_old, MSSV_old))
+    conn.commit()
+
+def change_data_of_table_ThoiGianHoc(MSSV_old, MLH_old, MSSV_new, MLH_new, ThoiGianHoc_new):
+    cursor.execute("""
+        UPDATE ThoiGianHoc 
+        SET MSSV = ?, MLH = ?, ThoiGianHoc = ?
+        WHERE MSSV = ? AND MLH = ?;
+    """, (MSSV_new, MLH_new, ThoiGianHoc_new, MSSV_old, MLH_old))
+    conn.commit()
