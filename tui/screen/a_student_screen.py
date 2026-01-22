@@ -2,7 +2,7 @@ from webbrowser import get
 from textual.app import *
 from textual.widgets import *
 from libs.database_lib.database import get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_name_LopHoc, get_score_a_subject_by_MLH_of_a_student, get_time_of_a_Lophoc_by_MSSV
-from libs.database_lib.evaluate_student_lib import change_score_to_word, get_cpa_10, get_cpa_4, get_gpa_10, get_gpa_4, get_info_sinhvien, get_name_student
+from libs.database_lib.evaluate_student_lib import change_score_to_word, evaluate_student, get_cpa_10, get_cpa_4, get_gpa_10, get_gpa_4, get_info_sinhvien, get_name_student
 from tui.screen.base_screen import BaseScreen
 
 class AStudentScreen(BaseScreen):
@@ -18,15 +18,22 @@ class AStudentScreen(BaseScreen):
         yield Static("")
         yield Static("Hiện GPA và danh sách các môn của 1 học kỳ của 1 sinh viên")
         yield Input(placeholder="Nhập mã sinh viên", id="mssv_input2")
-        yield Input(placeholder="Nhập học kỳ: 1, 2, 3, 4, 5, 6, 7", id="hoc_ky_input")
+        yield Input(placeholder="Nhập học kỳ: 1, 2, 3, 4, 5, 6, 7", id="hoc_ky_input2")
         yield Button("Hiện thông tin trong 1 học kỳ", id="get_gpa_by_mssv_button")
         yield Static("", id="output2")
         yield Static("")
         yield Static("")
-        yield Static("Hiện tất cả thông tin trong CSDL của sinh viên dưới dạng các bộ sau khi join")
+        yield Static("Hiện tất cả thông tin trong CSDL của sinh viên dưới dạng các bộ sau khi join \n(Là tổng quát hơn của 2 chức năng bên trên)")
         yield Input(placeholder="Nhập mã sinh viên", id="mssv_input3")
         yield Button("Hiện thông tin", id="get_info_button")
         yield Static("", id="output3")
+        yield Static("")
+        yield Static("")
+        yield Static("Đánh giá sinh viên theo từng kỳ hoặc toàn bộ tất cả các kỳ\nNếu không nhập học kỳ thì đánh giá toàn bộ tất cả các kỳ")
+        yield Input(placeholder="Nhập mã sinh viên", id="mssv_input4")
+        yield Input(placeholder="Nhập học kỳ: 1, 2, 3, 4, 5, 6, 7", id="hoc_ky_input4")
+        yield Button("Hiện đánh giá", id="evaluate_button")
+        yield Static("", id="output4")
         yield Static("")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -35,6 +42,7 @@ class AStudentScreen(BaseScreen):
         output_widget1 = self.query_one("#output1", Static)
         output_widget2 = self.query_one("#output2", Static)
         output_widget3 = self.query_one("#output3", Static)
+        output_widget4 = self.query_one("#output4", Static)
         output = ""
         if button_id == "get_all_classes_by_mssv_button":
             try:
@@ -55,7 +63,7 @@ class AStudentScreen(BaseScreen):
         elif button_id == "get_gpa_by_mssv_button":
             try:
                 mssv = int(self.query_one("#mssv_input2", Input).value)
-                hk = int(self.query_one("#hoc_ky_input", Input).value)
+                hk = int(self.query_one("#hoc_ky_input2", Input).value)
                 output = f"GPA kỳ {hk} của sinh viên {mssv} - {get_name_student(mssv)}:\n Hệ 10: {get_gpa_10(mssv, hk)} - Hệ 4: {get_gpa_4(mssv, hk)}\n"
                 output += f"Các lớp học theo học trong học kỳ {hk}:\n"
                 MLH = get_all_MLH_in_a_HocKy(hk)
@@ -80,6 +88,23 @@ class AStudentScreen(BaseScreen):
                 output_widget3.update("Chê! Không có sinh viên nào trong danh sách có mã đó!")
                 return
             output_widget3.update(output)
+            output = ""
+
+        elif button_id == "evaluate_button":
+            try:
+                mssv = int(self.query_one("#mssv_input4", Input).value)
+                hk_input = self.query_one("#hoc_ky_input4", Input).value
+                if hk_input == "":
+                    output = f"Đánh giá sinh viên {mssv} - {get_name_student(mssv)} toàn bộ các kỳ:\n"
+                    output += evaluate_student(mssv)
+                else:
+                    hk = int(hk_input)
+                    output = f"Đánh giá sinh viên {mssv} - {get_name_student(mssv)} trong học kỳ {hk}:\n"
+                    output += evaluate_student(mssv, hk)
+            except:
+                output_widget4.update("Chê! Không có sinh viên nào trong danh sách có mã đó!")
+                return
+            output_widget4.update(output)
             output = ""
 
     def on_key(self, event): 
