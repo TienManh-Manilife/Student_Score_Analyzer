@@ -1,7 +1,6 @@
 from textual.app import *
 from textual.widgets import *
 from tui.screen.base_screen import BaseScreen
-from tui.screen.database_screen import DatabaseScreen
 
 
 class MenuScreen(BaseScreen):
@@ -31,7 +30,7 @@ class MenuScreen(BaseScreen):
         elif button_id == "all_classes_button":
             self.app.push_screen("AllClassesScreen")
         elif button_id == "a_class_button":
-            return
+            self.app.push_screen("AClassScreen")
         elif button_id == "a_student_button":
             return
         elif button_id == "conversion_and_evaluation_button":
