@@ -144,9 +144,13 @@ Tách riêng các phần đảm bảo dễ mở rộng hơn trong tương lai:
     + Các điểm số của 7 kỳ trong CSDL
     + Thời gian làm khóa luận / đồ án mỗi sinh viên bằng nhau và bằng 1 kỳ học (kỳ cuối)
     + Thời gian làm khóa luận / đồ án thực tế của mỗi sinh viên là khác nhau dựa trên thời gian học trong CSDL
-- Yêu cầu đầu ra:
-    + Phân tích hành vi của từng sinh viên, họ có thể dành ra thời gian bao nhiêu để làm khóa luận / đồ án
-    + Từ thời gian đó, chất lượng của họ như nào
+- Ý tưởng:
+    + Dưới đây đặt mảng thời gian học của sinh viên A trong 7 kỳ đầu là arr_time
+    + Dự đoán thời gian làm trung bình: TB = mean(arr_time) + hệ số time * std(arr_time)
+    + Dự đoán điểm trung bình đạt được khi thời gian là TB: SC = a*TB + b (a, b là hệ số hồi quy tuyến tính lấy từ chức năng bên trên)
+    + Dự đoán khoảng điểm đạt được: Min = SC - hệ số * rmse và Max = SC + hệ số * rmse  
+    (rmse là căn bậc hai của trung bình bình phương sai số của điểm số sinh viên đó)
+<img src="./resources/outputimages/ability.png" width=30%>
 
 #### Nhận và thay đổi thông tin sinh viên từ ảnh
 - Đặt vấn đề: Không phải lúc nào cũng có thời gian chỉnh sửa thông tin về dạng chuẩn, hoặc là phải cập nhật từng thông tin một. Cần xử lý ảnh cơ bản để cập nhật nhanh các thông tin từ ảnh, đỡ mất thời gian nhập rất lâu

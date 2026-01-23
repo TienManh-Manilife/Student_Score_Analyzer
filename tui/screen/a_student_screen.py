@@ -1,6 +1,7 @@
 from webbrowser import get
 from textual.app import *
 from textual.widgets import *
+from libs.ability.ability_graduation_lib import get_evaluation_to_write
 from libs.database_lib.database import get_all_MLH_by_MSSV, get_all_MLH_in_a_HocKy, get_all_MLH_in_a_HocKy_of_a_student, get_name_LopHoc, get_score_a_subject_by_MLH_of_a_student, get_time_of_a_Lophoc_by_MSSV
 from libs.database_lib.evaluate_student_lib import change_score_to_word, evaluate_student, get_cpa_10, get_cpa_4, get_gpa_10, get_gpa_4, get_info_sinhvien, get_name_student
 from tui.screen.base_screen import BaseScreen
@@ -35,6 +36,12 @@ class AStudentScreen(BaseScreen):
         yield Button("Hiện đánh giá", id="evaluate_button")
         yield Static("", id="output4")
         yield Static("")
+        yield Static("")
+        yield Static("Đánh giá khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên\nNếu không nhập gì thì đánh giá tất cả")
+        yield Input(placeholder="Nhập mã sinh viên", id="mssv_input5")
+        yield Button("Hiện đánh giá", id="evaluate_work_button")
+        yield Static("", id="output5")
+        yield Static("")
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button_id = event.button.id
@@ -43,6 +50,7 @@ class AStudentScreen(BaseScreen):
         output_widget2 = self.query_one("#output2", Static)
         output_widget3 = self.query_one("#output3", Static)
         output_widget4 = self.query_one("#output4", Static)
+        output_widget5 = self.query_one("#output5", Static)
         output = ""
         if button_id == "get_all_classes_by_mssv_button":
             try:
@@ -105,6 +113,20 @@ class AStudentScreen(BaseScreen):
                 output_widget4.update("Chê! Không có sinh viên nào trong danh sách có mã đó!")
                 return
             output_widget4.update(output)
+            output = ""
+
+        elif button_id == "evaluate_work_button":
+            try:
+                mssv = self.query_one("#mssv_input5", Input).value
+                if mssv == "":
+                    mssv = None
+                else:
+                    mssv = int(mssv)
+                output = get_evaluation_to_write(mssv)
+            except:
+                output_widget4.update("Chê! Lỗi dữ liệu rồi nhé!")
+                return
+            output_widget5.update(output)
             output = ""
 
     def on_key(self, event): 

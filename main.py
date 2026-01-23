@@ -4,6 +4,4 @@ from libs.ability.ability_graduation_lib import *
 from tui.app.analyzer import AnalyzerApp
 
 if __name__ == "__main__":
-    # AnalyzerApp().run()
-    for mssv in get_all_MSSV():
-        print(get_evaluation_to_write(mssv))
+    AnalyzerApp().run()

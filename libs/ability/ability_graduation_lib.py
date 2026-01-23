@@ -25,11 +25,23 @@ def get_range(a, b):
     return ans_arr, percent
 
 
-def get_evaluation_to_write(mssv):
-    low, high = predict_period_of_score_to_write(mssv)
-    output = f"Dự đoán khả năng làm khóa luận / đồ án của sinh viên {get_name_student(mssv)} {mssv}\n"
-    output += f"Khoảng điểm dự đoán: {low} - {high}\n"
-    ans_arr, percent = get_range(low, high)
-    for p in percent:
-        output += f"Tỉ lệ đạt {change_score_to_word(ans_arr[percent.index(p)])}: {p}\n"
+def get_evaluation_to_write(mssv=None):
+    output = ""
+    if mssv is None:
+        for ms in get_all_MSSV():
+            mssv = ms
+            low, high = predict_period_of_score_to_write(mssv)
+            output += f"Dự đoán khả năng làm khóa luận / đồ án của sinh viên {get_name_student(mssv)} {mssv}\n"
+            output += f"Khoảng điểm dự đoán: {low} - {high}\n"
+            ans_arr, percent = get_range(low, high)
+            for p in percent:
+                output += f"Tỉ lệ đạt {change_score_to_word(ans_arr[percent.index(p)])}: {p}\n"
+            output += "\n"
+    else:
+        low, high = predict_period_of_score_to_write(mssv)
+        output += f"Dự đoán khả năng làm khóa luận / đồ án của sinh viên {get_name_student(mssv)} {mssv}\n"
+        output += f"Khoảng điểm dự đoán: {low} - {high}\n"
+        ans_arr, percent = get_range(low, high)
+        for p in percent:
+            output += f"Tỉ lệ đạt {change_score_to_word(ans_arr[percent.index(p)])}: {p}\n"
     return output
