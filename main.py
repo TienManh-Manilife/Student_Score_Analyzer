@@ -5,4 +5,5 @@ from tui.app.analyzer import AnalyzerApp
 
 if __name__ == "__main__":
     # AnalyzerApp().run()
-    print(get_evaluation_to_write(24020220))
+    for mssv in get_all_MSSV():
+        print(get_evaluation_to_write(mssv))
