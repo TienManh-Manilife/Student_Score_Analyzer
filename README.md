@@ -30,14 +30,14 @@
     2. Cài môi trường ảo
         python -m venv venv
     3. Mở môi trường ảo
-        Window: venv\Scripts\activate
+        Windows: venv\Scripts\activate
         Linux/MacOs: source venv/bin/activate
     4. Tải thư viện cần thiết
         pip install -r requirements.txt (Sau khi cài và mở venv)
     5. Chạy chương trình
         python main.py
 ## Yêu cầu
-Khuyến nghị các phiên bản python 3.10, 3.11, 3.12. không nên dùng các phiên bản 3.14
+Khuyến nghị các phiên bản python 3.10, 3.11, 3.12. không nên dùng các phiên bản chưa ổn định
 ## Cấu trúc thư mục
 ... Cập nhật sau
 ## Hình thức sử dụng
@@ -111,6 +111,8 @@ Tách riêng các phần đảm bảo dễ mở rộng hơn trong tương lai:
     2. Hiện GPA và danh sách các môn của 1 học kỳ của 1 sinh viên
     3. Hiện tất cả thông tin trong CSDL của sinh viên dưới dạng các bộ sau khi join
     4. Đánh giá sinh viên theo từng kỳ hoặc toàn bộ tất cả các kỳ. Nếu không nhập học kỳ thì đánh giá toàn bộ tất cả các kỳ
+    5. Dự đoán khả năng làm Khóa luận / Đồ án tốt nghiệp của từng sinh viên (Chức năng mở rộng được liệt kê mục bên dưới, nhưng tích hợp giao diện vào chung với "Thao tác trong 1 sinh viên")
+  
 <img src="./resources/outputimages/a_student_screen.png" width=30%>
 
 ### Cách quy đổi
@@ -149,16 +151,18 @@ Tách riêng các phần đảm bảo dễ mở rộng hơn trong tương lai:
     + Dự đoán thời gian làm trung bình: TB = mean(arr_time) + hệ số time * std(arr_time)
     + Dự đoán điểm trung bình đạt được khi thời gian là TB: SC = a*TB + b (a, b là hệ số hồi quy tuyến tính lấy từ chức năng bên trên)
     + Dự đoán khoảng điểm đạt được: Min = SC - hệ số * rmse và Max = SC + hệ số * rmse  
-    (rmse là căn bậc hai của trung bình bình phương sai số của điểm số sinh viên đó)
+    (RMSE là căn bậc hai của trung bình bình phương sai số giữa điểm thực tế và điểm dự đoán của mô hình hồi quy)
+- Tích hợp vào giao diện chức năng thao tác với từng sinh viên
 <img src="./resources/outputimages/ability.png" width=30%>
 
 #### Nhận và thay đổi thông tin sinh viên từ ảnh
 - Đặt vấn đề: Không phải lúc nào cũng có thời gian chỉnh sửa thông tin về dạng chuẩn, hoặc là phải cập nhật từng thông tin một. Cần xử lý ảnh cơ bản để cập nhật nhanh các thông tin từ ảnh, đỡ mất thời gian nhập rất lâu
 - Dữ liệu biết trước: Ảnh bảng dữ liệu, dạng chuẩn ngay ngắn, tên cột rõ ràng
 - Yêu cầu: Cập nhật thông tin trong CSDL thành thông tin giống trong ảnh
+(Đang phát triển)
 
 ## Giấy phép
 - Dự án này chỉ dùng để học tập
 ## Liên hệ
 Email: manilife217@gmail.com  
-Last update: 22/01/2026
+Last update: 24/01/2026
